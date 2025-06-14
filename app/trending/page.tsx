@@ -134,11 +134,11 @@ export default function Trending() {
             <FaCommentAlt />
             <span>Blogs</span>
           </Link>
-          <Link href="/trending" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
+          <Link href="/gallery" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
             <IoImages className="text-2xl" />
             <span>Gallery</span>
           </Link>
-          <Link href="/leaderboard" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
+          <Link href="/contact" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
             <FaPhoneAlt className="text-xl" />
             <span>Contact Us</span>
           </Link>

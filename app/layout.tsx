@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'ForumHub - Where Ideas Come to Life',
+  title: 'LetsDiskuss - Where Ideas Come to Life',
   description: 'Join thousands of professionals sharing knowledge, solving problems, and building the future together in our vibrant community.',
 };
 

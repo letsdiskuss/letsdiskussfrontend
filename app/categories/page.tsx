@@ -163,11 +163,11 @@ export default function Categories() {
             <FaCommentAlt />
             <span>Blogs</span>
           </Link>
-          <Link href="/trending" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
+          <Link href="/gallery" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
             <IoImages className="text-2xl" />
             <span>Gallery</span>
           </Link>
-          <Link href="/leaderboard" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
+          <Link href="/contact" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
             <FaPhoneAlt className="text-xl" />
             <span>Contact Us</span>
           </Link>
@@ -243,7 +243,7 @@ export default function Categories() {
   </div>
 </div>
 
-        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Controls */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
@@ -430,6 +430,7 @@ export default function Categories() {
             <p className="text-gray-600">Try adjusting your search or filter criteria</p>
           </div>
         )}
+        </div>
     </div>
   
   );
