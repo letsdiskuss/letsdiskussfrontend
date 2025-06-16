@@ -21,6 +21,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    mobile: '',
     subject: '',
     message: ''
   });
@@ -82,7 +83,7 @@ export default function Contact() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       {/* Header */}
      {/* Header - Fixed */}
-           <header className="fixed top-0 left-0 right-0 z-50 bg-green-950 shadow-sm">
+           <header className="fixed top-0 left-0 right-0 z-50 bg-[#20565c] shadow-sm">
              <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
                <div className="flex items-center justify-between h-16">
                  
@@ -122,7 +123,7 @@ export default function Contact() {
                        <input type="radio" name="language" className="accent-white" />
                        <span>हिंदी</span>
                      </label>
-                     <label className="flex items-center space-x-1 bg-green-500 text-white px-2 py-1 rounded-full font-semibold">
+                     <label className="flex items-center space-x-1 bg-[#20565c] text-white px-2 py-1 rounded-full font-semibold">
                        <input type="radio" name="language" defaultChecked className="accent-white" />
                        <span>English</span>
                      </label>
@@ -142,7 +143,7 @@ export default function Contact() {
              </div>
            </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <div className="flex items-center space-x-2 text-sm text-gray-600 mb-6">
           <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
@@ -150,26 +151,8 @@ export default function Contact() {
           <span className="text-gray-900 font-medium">Contact Us</span>
         </div>
 
-        {/* Back Button */}
-        <div className="mb-6">
-          <Button variant="ghost" size="sm" asChild className="text-gray-600 hover:text-blue-600">
-            <Link href="/">
-              <ArrowLeft className="h-4 w-4 mr-1" />
-              Back to Home
-            </Link>
-          </Button>
-        </div>
-
-        {/* Page Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center space-x-3 mb-4">
-            <MessageSquare className="h-8 w-8 text-blue-600" />
-            <h1 className="text-4xl font-bold text-gray-900">Contact Us</h1>
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-          </p>
-        </div>
+        
+       
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Form */}
@@ -177,73 +160,76 @@ export default function Contact() {
             <Card className="border-0 bg-white shadow-sm">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <Send className="h-5 w-5 text-blue-600" />
-                  <span>Send us a Message</span>
+                
+                  <span>Contact Us</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Full Name *
-                      </label>
+                      
                       <Input
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="Enter your full name"
+                        placeholder="Your Name*"
                         required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email Address *
-                      </label>
+                     
                       <Input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="Enter your email"
+                        placeholder="Your Email*"
                         required
                       />
                     </div>
-                  </div>
+                  
+                   <div>
+                     
+                      <Input
+                        type="tel"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleChange}
+                        placeholder="Mobile No.*"
+                        required
+                      />
+                    </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Subject *
-                    </label>
+                    
                     <Input
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      placeholder="What is this about?"
+                      placeholder="Subject*"
                       required
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Message *
-                    </label>
+                    
                     <Textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell us more about your inquiry..."
-                      className="min-h-32 resize-none"
+                      placeholder="Your Message*"
+                      className="min-h-64 resize-none"
                       required
                     />
                   </div>
 
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                    className="w-full bg-[#20565c]"
                   >
-                    <Send className="w-4 h-4 mr-2" />
-                    Send Message
+                   
+                    Submit
                   </Button>
                 </form>
               </CardContent>
