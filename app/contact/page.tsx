@@ -15,6 +15,7 @@ import { FaCommentAlt, FaPhoneAlt, FaPen } from 'react-icons/fa';
 import { Bell } from 'lucide-react';
 import { Image } from 'lucide-react';
 import { Edit } from 'lucide-react';
+import { FaEnvelope, FaPhone, FaTwitter, FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
 
 
 export default function Contact() {
@@ -143,20 +144,12 @@ export default function Contact() {
              </div>
            </header>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className=" max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <div className="flex items-center space-x-2 text-sm text-gray-600 mb-6">
-          <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-          <span>/</span>
-          <span className="text-gray-900 font-medium">Contact Us</span>
-        </div>
-
-        
-       
-
-        <div className="grid lg:grid-cols-3 gap-8">
+      
+        <div  className="min-h-screen bg-gray-50 py-12">
           {/* Contact Form */}
-          <div className="lg:col-span-2">
+          <div className="max-w-7xl mx-auto px-42">
             <Card className="border-0 bg-white shadow-sm">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
@@ -165,6 +158,8 @@ export default function Contact() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
+                
+        
                 <form onSubmit={handleSubmit} className="space-y-4">
                 
                     <div>
@@ -213,20 +208,20 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Your Message*"
-                      className="min-h-64 resize-none"
-                      required
-                    />
-                  </div>
+                <textarea
+                  name="message"
+                  placeholder="Your Message *"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={6}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+                  required
+                ></textarea>
+              </div>
 
                   <Button 
                     type="submit" 
-                    className="w-full bg-[#20565c]"
+                    className="w-full  bg-[#20565c] text-white py-3 px-6 rounded-md font-semibold transition-colors"
                   >
                    
                     Submit
@@ -236,80 +231,92 @@ export default function Contact() {
             </Card>
           </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Contact Information */}
-            <Card className="border-0 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle>Get in Touch</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="flex-shrink-0">
-                        {info.icon}
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">{info.title}</h4>
-                        <p className="text-blue-600 font-medium mb-1">{info.details}</p>
-                        <p className="text-sm text-gray-600">{info.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+          {/* Contact Information */}
+          <div>
+          <div className="bg-white rounded-lg shadow-md p-8 ">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Write To Us</h2>
 
-            {/* Business Hours */}
-            <Card className="border-0 bg-gradient-to-br from-blue-50 to-purple-50">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Clock className="h-5 w-5 text-blue-600" />
-                  <span>Business Hours</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="font-medium">Monday - Friday</span>
-                    <span>9:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-medium">Saturday</span>
-                    <span>10:00 AM - 4:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-medium">Sunday</span>
-                    <span>Closed</span>
-                  </div>
-                </div>
-                <p className="text-xs text-gray-600 mt-4">
-                  All times are in Indian Standard Time (IST)
+            <div className="space-y-8">
+              {/* Advertise Section */}
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Advertise with Us</h3>
+                <p className="text-gray-600 mb-2">Want to advertise with us?</p>
+                <p className="text-gray-600 mb-2">Or find out how else we can work with your brand?</p>
+                <p className="text-gray-600">
+                  Let's talk! Connect at{' '}
+                  <a href="mailto:submission@letsdiskuss.com" className="text-[#0000EE] hover:underline">
+                    submission@letsdiskuss.com
+                  </a>{' '}
+                  or call{' '}
+                  <a href="tel:+918800259785" className="text-[#0000EE] hover:underline">
+                    +91 88002 59785
+                  </a>
                 </p>
-              </CardContent>
-            </Card>
+              </div>
 
-            {/* FAQ */}
-            <Card className="border-0 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle>Frequently Asked Questions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <div key={index}>
-                      <h4 className="font-medium text-gray-900 mb-2">{faq.question}</h4>
-                      <p className="text-sm text-gray-600">{faq.answer}</p>
-                      {index < faqs.length - 1 && <hr className="mt-4" />}
-                    </div>
-                  ))}
+              {/* Partnership Section */}
+             
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">To Become our Blogging Partner</h3>
+                <p className="text-gray-600">
+                  Interested in partnering with us? Write to{' '}
+                  <a href="mailto:contact@letsdiskuss.com" className="text-[#0000EE] hover:underline">
+                    contact@letsdiskuss.com
+                  </a>
+                </p>
+              </div>
+
+             
+
+              {/* Social Links */}
+              <div>
+                <h3 className="text-3xl  text-gray-500 mb-4">Social Links</h3>
+                <div className="flex space-x-4">
+                  <a
+                    href="https://twitter.com/Letsdiskuss"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl text-blue-400 hover:text-blue-600 transition-colors"
+                  >
+                    <FaTwitter />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/Letsdiskuss-315820455578889/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    <FaFacebookF />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/letsdiskuss/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl text-pink-600 hover:text-pink-800 transition-colors"
+                  >
+                    <FaInstagram />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/channel/UC8P36SywfXz8FI0ioSzJuew/videos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl text-red-600 hover:text-red-800 transition-colors"
+                  >
+                    <FaYoutube />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/lets-diskuss/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl text-blue-700 hover:text-blue-900 transition-colors"
+                  >
+                    <FaLinkedinIn />
+                  </a>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   );
 }
