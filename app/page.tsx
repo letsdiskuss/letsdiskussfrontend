@@ -17,7 +17,7 @@ import {
   Bell,
   HelpCircle,
   BellOff,
-  Home,
+  
   Image,
   Phone,
   Edit,
@@ -55,10 +55,7 @@ const categories = [
   { name: 'Others', icon: Plus }
 ];
 
-const contestQuestions = [
-  "What is the 1st Day Collection of Jawan Worldwide?",
-  "Why India's Government Wants to Change the Country's Name to Bharat?"
-];
+
 
 const socialLinks = [
   { name: 'Twitter', icon: Twitter, color: 'bg-blue-400' },
@@ -184,7 +181,7 @@ export default function Home() {
             {/* LEFT: Navigation */}
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center space-x-2">
-                <Home className="text-2xl text-white" />
+                
                 <span className="text-white font-bold">Home</span>
               </Link>
               <nav className="hidden md:flex space-x-6">
@@ -312,19 +309,7 @@ export default function Home() {
           </div>
 
           {/* Contest Questions Section */}
-          <div className="p-4 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gray-400 rounded"></div>
-              <span>Contest Questions</span>
-            </h3>
-            <div className="space-y-3">
-              {contestQuestions.map((question, index) => (
-                <div key={index} className="text-sm text-blue-600 hover:text-blue-800 cursor-pointer transition-colors">
-                  {question}
-                </div>
-              ))}
-            </div>
-          </div>
+         
 
           {/* Find Us Section */}
           <div className="p-4 border-b border-gray-200">
@@ -443,53 +428,14 @@ export default function Home() {
           </div>
 
           {/* Picnic Recipes Card */}
-          <div className="p-4">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-              <div className="p-4">
-                <p className="text-sm text-gray-700 mb-4">
-                  Planning a picnic? ???????? Try these 10 super easy and delicious recipes that are perfect for any outdoor vibe. Fresh, fun, and so simple to make!
-                </p>
-              </div>
+         
               
               {/* Recipe Image */}
-              <div className="relative">
-                <img 
-                  src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                  alt="Picnic recipes" 
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h4 className="text-white font-bold text-lg mb-2">10 Simple Picnic Recipes</h4>
-                  <p className="text-white/90 text-sm">
-                    Check out these 10 easy picnic recipes that are super quick to make and perfect for any outdoor hangout. From yummy appetizers to fresh salads, they'll make your picnic extra tasty!
-                  </p>
-                </div>
-              </div>
+             
 
               {/* Navigation */}
-              <div className="p-4 flex items-center justify-between">
-                <button className="flex items-center space-x-1 text-gray-600 hover:text-gray-800 transition-colors">
-                  <ChevronLeft className="w-4 h-4" />
-                  <span className="text-sm">BACK</span>
-                </button>
-                
-                <div className="flex space-x-2">
-                  {[0, 1, 2, 3, 4].map((dot, index) => (
-                    <div 
-                      key={index} 
-                      className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-teal-600' : 'bg-gray-300'}`}
-                    ></div>
-                  ))}
-                </div>
-                
-                <button className="flex items-center space-x-1 text-teal-600 hover:text-teal-700 transition-colors">
-                  <span className="text-sm">NEXT</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
+              
+            
         </div>
       </div>
     </div>

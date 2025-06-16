@@ -15,6 +15,10 @@ import { FaBell } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { BiSolidBellOff } from "react-icons/bi";
 import { IoMdHelpCircle } from "react-icons/io";
+import { Phone } from 'lucide-react';
+import { Edit } from 'lucide-react';
+import { Bell } from 'lucide-react';
+import { Image } from 'lucide-react';
 
 import { TrendingUp as TrendingUpIcon } from 'lucide-react';
 
@@ -148,66 +152,66 @@ export default function Categories() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
             {/* Header */}
-      <header className="sticky top-0 z-50 bg-green-950">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex items-center justify-between h-16">
-      
-      {/* LEFT: Navigation */}
-      <div className="flex items-center space-x-8">
-        <Link href="/" className="flex items-center space-x-2">
-          <IoMdHome className="text-2xl text-white" />
-          <span className="text-white font-bold">Home</span>
-        </Link>
-        <nav className="hidden md:flex space-x-6">
-          <Link href="/categories" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-1">
-            <FaCommentAlt />
-            <span>Blogs</span>
-          </Link>
-          <Link href="/gallery" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
-            <IoImages className="text-2xl" />
-            <span>Gallery</span>
-          </Link>
-          <Link href="/contact" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
-            <FaPhoneAlt className="text-xl" />
-            <span>Contact Us</span>
-          </Link>
-          <Link href="/writeforus" className="text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
-            <FaPen className="text-xl" />
-            <span>Write For Us</span>
-          </Link>
-        </nav>
-      </div>
+     {/* Header - Fixed */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-green-950 shadow-sm">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            
+            {/* LEFT: Navigation */}
+            <div className="flex items-center space-x-8">
+              <Link href="/" className="flex items-center space-x-2">
+                
+                <span className="text-white font-bold">Home</span>
+              </Link>
+              <nav className="hidden md:flex space-x-6">
+                <Link href="/blogs" className="text-white hover:text-blue-300 transition-colors flex items-center space-x-1">
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Blogs</span>
+                </Link>
+                <Link href="/gallery" className="text-white hover:text-blue-300 transition-colors flex items-center space-x-2">
+                  <Image className="w-4 h-4" />
+                  <span>Gallery</span>
+                </Link>
+                <Link href="/contact" className="text-white hover:text-blue-300 transition-colors flex items-center space-x-2">
+                  <Phone className="w-4 h-4" />
+                  <span>Contact Us</span>
+                </Link>
+                <Link href="/writeforus" className="text-white hover:text-blue-300 transition-colors flex items-center space-x-2">
+                  <Edit className="w-4 h-4" />
+                  <span>Write For Us</span>
+                </Link>
+              </nav>
+            </div>
 
-      {/* RIGHT: Language, Notification, Profile */}
-      <div className="flex items-center space-x-6">
-        
-        {/* Language Switcher */}
-        <div className="flex items-center space-x-2 text-white text-sm">
-          <span>Language</span>
-          <label className="flex items-center space-x-1">
-            <input type="radio" name="language" className="accent-white" />
-            <span>हिंदी</span>
-          </label>
-          <label className="flex items-center space-x-1 bg-green-500 text-white px-2 py-1 rounded-full font-semibold">
-            <input type="radio" name="language" checked className="accent-white" />
-            <span>English</span>
-          </label>
+            {/* RIGHT: Language, Notification, Profile */}
+            <div className="flex items-center space-x-6">
+              
+              {/* Language Switcher */}
+              <div className="flex items-center space-x-2 text-white text-sm">
+                <span>Language</span>
+                <label className="flex items-center space-x-1">
+                  <input type="radio" name="language" className="accent-white" />
+                  <span>हिंदी</span>
+                </label>
+                <label className="flex items-center space-x-1 bg-green-500 text-white px-2 py-1 rounded-full font-semibold">
+                  <input type="radio" name="language" defaultChecked className="accent-white" />
+                  <span>English</span>
+                </label>
+              </div>
+
+              {/* Bell Icon */}
+              <Bell className="text-white text-xl cursor-pointer hover:text-blue-300 transition-colors" />
+
+              {/* User Profile */}
+              <div className="flex items-center space-x-2 text-white">
+                <FaUserCircle className="text-2xl" />
+                <span>Deepali Yadav</span>
+              </div>
+            </div>
+
+          </div>
         </div>
-
-        {/* Bell Icon */}
-        <FaBell className="text-white text-xl cursor-pointer" />
-
-        {/* User Profile */}
-        <div className="flex items-center space-x-2 text-white">
-          <FaUserCircle className="text-2xl" />
-          <span>Deepali Yadav</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</header>
-
+      </header>
      {/* Hero Section */}
       
 <div className="bg-white shadow-sm">
