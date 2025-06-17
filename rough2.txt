@@ -1,0 +1,152 @@
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { makeStyles } from '@material-ui/styles';
+import { useTheme } from '@material-ui/core/styles';
+import { Card, CardContent, Divider } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+// import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import ListIcon from '@material-ui/icons/List';
+import axios from "axios";
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
+import MobileStepper from '@material-ui/core/MobileStepper';
+import Button from '@material-ui/core/Button';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import StarIcon from '@material-ui/icons/Star';
+import DummySkeleton from '../../Custom/DummySkeleton'
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        maxWidth: 400,
+        flexGrow: 1,
+    },
+    header: {
+        display: 'flex',
+        alignItems: 'center',
+        height: 50,
+        // paddingLeft: theme.spacing(2),
+        // backgroundColor: theme.palette.background.default,
+    },
+    img: {
+        height: 255,
+        display: 'block',
+        maxWidth: 400,
+        overflow: 'hidden',
+        width: '100%',
+    },
+}));
+
+export default function TopDiscussions() {
+    const classes = useStyles();
+    const theme = useTheme();
+    const [loading, setLoading] = useState(true);
+    const [topQuestions, setTopQuestions] = useState([]);
+    const [activeStep, setActiveStep] = React.useState(0);
+    const maxSteps = topQuestions.length;
+
+    const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    };
+
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+
+    const handleStepChange = (step) => {
+        setActiveStep(step);
+    };
+
+
+    useEffect(() => {
+        axios
+            .post(`https://api.letsdiskuss.com/question/getTopDiscussion`, {
+                lang: "Hindi",
+
+            }).then((res) => {
+                setTopQuestions(res.data);
+                setLoading(false);
+                // console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+    if (loading) {
+        return <><DummySkeleton contest="y" /></>
+    }
+    return (
+        <div>
+            <Card style={{ marginTop: 10 }}>
+
+                <CardContent style={{ wordWrap: "break-word", maxWidth: 300 }}>
+                    <Typography>
+                        <h4
+                            style={{ marginBottom: 5, display: "flex" }}
+                        >
+                            <span>
+                                <ListIcon style={{ fontSize: 20 }} />
+                            </span><pre> </pre>टॉप डिस्कशन्स  </h4>
+                        <Divider style={{ marginBottom: 6 }} />
+                        {/* {bestAnswer.map((best, key) => ())} */}
+
+                    </Typography>
+                    <AutoPlaySwipeableViews
+                        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                        index={activeStep}
+                        onChangeIndex={handleStepChange}
+                        enableMouseEvents
+                    >
+                        {topQuestions.map((step, index) => (
+                            <div key={index}>
+                                {Math.abs(activeStep - index) <= 2 ? (
+                                    <span style={{ display: "flex", wordWrap: "break-word" }}>
+                                        <StarIcon style={{ color: "#ffc107" }} />
+                                        <Typography variant="body"><span>
+
+                                            <a target="_blank" href={`/${step.slug}`} className="tag-link" style={{ color: "#000" }}>{step.title.slice(0, 60)}
+                                            </a>
+                                        </span></Typography></span>
+                                ) : null}
+                            </div>
+                        ))}
+                    </AutoPlaySwipeableViews>
+                    <MobileStepper
+                        style={{ backgroundColor: "#fff" }}
+                        // steps={maxSteps}
+                        position="static"
+                        // activeStep={activeStep}
+                        nextButton={
+                            <Button
+                                size="small"
+                                onClick={handleNext}
+                                disabled={activeStep === maxSteps - 1}
+                            >
+
+                                {theme.direction === 'rtl' ? (
+                                    <KeyboardArrowLeft />
+                                ) : (
+                                    <KeyboardArrowRight />
+                                )}
+                            </Button>
+                        }
+                        backButton={
+                            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                                {theme.direction === 'rtl' ? (
+                                    <KeyboardArrowRight />
+                                ) : (
+                                    <KeyboardArrowLeft />
+                                )}
+
+                            </Button>
+                        }
+                    />
+
+
+                </CardContent>
+            </Card>
+        </div>
+    )
+}
