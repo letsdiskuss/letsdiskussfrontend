@@ -2,48 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  Search, 
-  TrendingUp, 
-  Users, 
-  MessageSquare, 
-  Star, 
-  ArrowRight, 
-  ChevronRight, 
-  Clock, 
-  ThumbsUp, 
-  Eye, 
-  Bookmark,
-  Bell,
-  HelpCircle,
-  BellOff,
-  
-  Image,
-  Phone,
-  Edit,
-  Wrench,
-  MessageCircle,
-  Gamepad2,
-  Heart,
-  ChefHat,
-  Trophy,
-  GraduationCap,
-  Plus,
-  Twitter,
-  Facebook,
-  Instagram,
-  Youtube,
-  Linkedin,
-  ChevronLeft
-} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { FaUserCircle } from "react-icons/fa";
-
-
+import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import {
+  MessageCircle, Search, BellOff, HelpCircle, Wrench, Gamepad2, Heart,
+  ChefHat, Star, Trophy, GraduationCap, Plus, Twitter, Facebook, Instagram,
+  Youtube, Linkedin, Clock, MessageSquare, Eye, ThumbsUp, X
+} from 'lucide-react';
 
 const categories = [
   { name: 'Science & Technology', icon: Wrench },
@@ -57,8 +25,6 @@ const categories = [
   { name: 'Others', icon: Plus }
 ];
 
-
-
 const socialLinks = [
   { name: 'Twitter', icon: Twitter, color: 'bg-blue-400' },
   { name: 'Facebook', icon: Facebook, color: 'bg-blue-600' },
@@ -67,7 +33,13 @@ const socialLinks = [
   { name: 'LinkedIn', icon: Linkedin, color: 'bg-blue-700' }
 ];
 
-const footerLinks = ['Terms', 'Privacy', 'Disclaimer', 'About', 'Faq'];
+const footerLinks = [
+  { name: 'Terms', path: '/terms' },
+  { name: 'Privacy', path: '/privacy' },
+  { name: 'Disclaimer', path: '' }, // Special handling for modal
+  { name: 'About', path: '/about' },
+  { name: 'Faq', path: '/faq' }
+];
 
 const topDiscussions = [
   "What is the best cursive font in Microsoft Word?",
@@ -227,79 +199,76 @@ const featuredDiscussions = [
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [activeTab, setActiveTab] = useState("Latest Questions");
+  const [activeTab, setActiveTab] = useState('Latest Questions');
+  const [isDisclaimerOpen, setDisclaimerOpen] = useState(false);
 
-  const tabs = [
-    'Latest Questions',
-    'Unanswered Questions', 
-    'Blogs',
-    'Featured Questions',
-    'Reels'
-  ];
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  const tabs = ['Latest Questions', 'Unanswered Questions', 'Blogs', 'Featured Questions', 'Reels'];
 
   return (
-    
-  <div className="flex min-h-screen">
+    <>
+      <div className={`flex min-h-screen ${isDisclaimerOpen ? 'blur-sm overflow-hidden' : ''}`}>
+        {/* Left Sidebar */}
+        <div className="w-[20%] bg-white border-r border-gray-200 h-screen overflow-y-auto fixed left-5 top-0 z-10">
+          <div className="p-4 border-b border-gray-200 mt-20">
+            <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
+              <MessageCircle className="w-4 h-4" />
+              <span>Become A Blogger</span>
+            </Button>
+          </div>
 
-    {/* 1st Div -----------------------------------*/}
-
-  {/* Left Sidebar - 30% */}
-  <div className="w-[20%] bg-white border-r border-gray-200 h-screen overflow-y-auto fixed left-5 top-0">
-    <div className="p-4 border-b border-gray-200 mt-20"> {/* Reduced from mt-32 to mt-20 */}
-      <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
-        <MessageCircle className="w-4 h-4" />
-        <span>Become A Blogger</span>
-      </Button>
-    </div>
-
-    <div className="p-4 border-b border-gray-200">
-      <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-        <div className="w-4 h-4 bg-gray-400 rounded"></div>
-        <span>Category</span>
-      </h3>
-      <div className="space-y-2">
-        {categories.map((category, index) => {
-          const IconComponent = category.icon;
-          return (
-            <div key={index} className="flex items-center space-x-3 py-2 px-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors">
-              <IconComponent className="w-4 h-4 text-gray-600" />
-              <span className="text-sm text-gray-700">{category.name}</span>
+          <div className="p-4 border-b border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+              <div className="w-4 h-4 bg-gray-400 rounded"></div>
+              <span>Category</span>
+            </h3>
+            <div className="space-y-2">
+              {categories.map((category, index) => {
+                const IconComponent = category.icon;
+                return (
+                  <div key={index} className="flex items-center space-x-3 py-2 px-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors">
+                    <IconComponent className="w-4 h-4 text-gray-600" />
+                    <span className="text-sm text-gray-700">{category.name}</span>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
-    </div>
+          </div>
 
-    <div className="p-4 border-b border-gray-200">
-      <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
-      <div className="grid grid-cols-3 gap-3">
-        {socialLinks.map((social, index) => {
-          const IconComponent = social.icon;
-          return (
-            <div key={index} className={`${social.color} p-3 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}>
-              <IconComponent className="w-5 h-5 text-white" />
+          <div className="p-4 border-b border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
+            <div className="grid grid-cols-3 gap-3">
+              {socialLinks.map((social, index) => {
+                const IconComponent = social.icon;
+                return (
+                  <div key={index} className={`${social.color} p-3 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}>
+                    <IconComponent className="w-5 h-5 text-white" />
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
-    </div>
+          </div>
 
-    <div className="p-4">
-      <div className="flex flex-wrap gap-4 text-xs">
-        {footerLinks.map((link, index) => (
-          <Link key={index} href="#" className="text-blue-600 hover:text-blue-800 transition-colors">
-            {link}
-          </Link>
-        ))}
-      </div>
-    </div>
-  </div>
-
+          {/* Footer */}
+          <div className="p-4">
+            <div className="flex flex-wrap gap-4 text-xs">
+              {footerLinks.map((link, index) =>
+                link.name === 'Disclaimer' ? (
+                  <button
+                    key={index}
+                    onClick={() => setDisclaimerOpen(true)}
+                    className="text-blue-600 hover:text-blue-800 transition-colors underline"
+                  >
+                    {link.name}
+                  </button>
+                ) : (
+                  <Link key={index} href={link.path} className="text-blue-600 hover:text-blue-800 transition-colors">
+                    {link.name}
+                  </Link>
+                )
+              )}
+            </div>
+          </div>
+        </div>
 
 {/* 2nd div------------------------------- */}
 
@@ -404,28 +373,63 @@ export default function Home() {
 
   {/* Right Sidebar - 20% */}
   <div className="w-[20%] bg-white border-l border-gray-200 h-screen overflow-y-auto fixed right-1 top-0">
-    <div className="p-4 border-b border-gray-200 mt-32">
-      <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-        <div className="w-4 h-4 bg-gray-400 rounded"></div>
-        <span>Top Discussions</span>
-      </h3>
-      <div className="space-y-4">
-        {topDiscussions.map((discussion, index) => (
-          <div key={index} className="flex items-start space-x-2">
-            <Star className="w-4 h-4 text-yellow-500 mt-1 flex-shrink-0" />
-            <p className="text-sm text-gray-700 hover:text-blue-600 cursor-pointer transition-colors">
-              {discussion}
-            </p>
+          <div className="p-4 border-b border-gray-200 mt-32">
+            <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+              <div className="w-4 h-4 bg-gray-400 rounded"></div>
+              <span>Top Discussions</span>
+            </h3>
+            <div className="space-y-4">
+              {topDiscussions.map((discussion, index) => (
+                <div key={index} className="flex items-start space-x-2">
+                  <Star className="w-4 h-4 text-yellow-500 mt-1 flex-shrink-0" />
+                  <p className="text-sm text-gray-700 hover:text-blue-600 cursor-pointer transition-colors">
+                    {discussion}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  </div>
 
-</div>
-
-
-
-
+      {/* Disclaimer Modal */}
+      {isDisclaimerOpen && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-white max-w-lg w-full rounded shadow-lg p-6 relative">
+            <button
+              onClick={() => setDisclaimerOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <h2 className="text-xl font-bold mb-2">Disclaimer</h2>
+            <p className="text-sm mb-4 text-gray-600"><strong>Last updated: 01.01.2018</strong></p>
+            <div className="text-gray-700 text-sm space-y-2 max-h-[300px] overflow-y-auto">
+              <p>
+                The information on www.letsdiskuss.com is for general information only. We assume no
+                responsibility for errors or omissions.
+              </p>
+              <p>
+                We are not liable for any damages (direct or indirect) related to the use of our website or services.
+              </p>
+              <p>
+                We reserve the right to make changes to the site and its content at any time without notice.
+              </p>
+              <p>
+                We do not guarantee the website is free from viruses or other harmful elements.
+              </p>
+            </div>
+            <div className="text-right mt-4">
+              <button
+                onClick={() => setDisclaimerOpen(false)}
+                className="text-blue-600 hover:text-blue-800 font-semibold"
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
