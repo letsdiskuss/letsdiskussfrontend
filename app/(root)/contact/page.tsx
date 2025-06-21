@@ -83,184 +83,135 @@ export default function Contact() {
 
   return (
    
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      {/* Header */}
-     {/* Header - Fixed */}
-           
+   <div className="min-h-screen bg-gray-100 py-12">
+  <div className="max-w-7xl mx-auto px-7  sm:px-6 mt-10 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {/* Contact Form */}
+      <div>
+        <Card className="border-5 bg-white shadow-sm">
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <span>Contact Us</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <Input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your Name*"
+                required
+              />
+              <Input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email*"
+                required
+              />
+              <Input
+                type="tel"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                placeholder="Mobile No.*"
+                required
+              />
+              <Input
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                placeholder="Subject*"
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message *"
+                value={formData.message}
+                onChange={handleChange}
+                rows={3}
+                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+                required
+              ></textarea>
+              <Button
+                type="submit"
+                className="w-full bg-[#20565c] text-white py-3 px-6 rounded-md font-semibold transition-colors"
+              >
+                Submit
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
 
-      <div className=" max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Breadcrumb */}
-     
-        <div  className="min-h-screen bg-gray-50 py-12">
-          {/* Contact Form */}
-          <div className="max-w-7xl mx-auto px-42">
-            <Card className="border-0 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                
-                  <span>Contact Us</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                
-        
-                <form onSubmit={handleSubmit} className="space-y-4">
-                
-                    <div>
-                      
-                      <Input
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Your Name*"
-                        required
-                      />
-                    </div>
-                    <div>
-                     
-                      <Input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Your Email*"
-                        required
-                      />
-                    </div>
-                  
-                   <div>
-                     
-                      <Input
-                        type="tel"
-                        name="mobile"
-                        value={formData.mobile}
-                        onChange={handleChange}
-                        placeholder="Mobile No.*"
-                        required
-                      />
-                    </div>
+      {/* Contact Information */}
+      <div className="border-5 bg-white shadow-sm">
+        <div className="bg-white rounded-lg  p-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Write To Us</h2>
 
-                  <div>
-                    
-                    <Input
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="Subject*"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                <textarea
-                  name="message"
-                  placeholder="Your Message *"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
-                  required
-                ></textarea>
-              </div>
-
-                  <Button 
-                    type="submit" 
-                    className="w-full  bg-[#20565c] text-white py-3 px-6 rounded-md font-semibold transition-colors"
-                  >
-                   
-                    Submit
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Contact Information */}
-          <div>
-          <div className="bg-white rounded-lg shadow-md p-8 ">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Write To Us</h2>
-
-            <div className="space-y-8">
-              {/* Advertise Section */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Advertise with Us</h3>
-                <p className="text-gray-600 mb-2">Want to advertise with us?</p>
-                <p className="text-gray-600 mb-2">Or find out how else we can work with your brand?</p>
-                <p className="text-gray-600">
-                  Let's talk! Connect at{' '}
-                  <a href="mailto:submission@letsdiskuss.com" className="text-[#0000EE] hover:underline">
-                    submission@letsdiskuss.com
-                  </a>{' '}
-                  or call{' '}
-                  <a href="tel:+918800259785" className="text-[#0000EE] hover:underline">
-                    +91 88002 59785
-                  </a>
-                </p>
-              </div>
-
-              {/* Partnership Section */}
-             
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">To Become our Blogging Partner</h3>
-                <p className="text-gray-600">
-                  Interested in partnering with us? Write to{' '}
-                  <a href="mailto:contact@letsdiskuss.com" className="text-[#0000EE] hover:underline">
-                    contact@letsdiskuss.com
-                  </a>
-                </p>
-              </div>
-
-             
-
-              {/* Social Links */}
-              <div>
-                <h3 className="text-3xl  text-gray-500 mb-4">Social Links</h3>
-                <div className="flex space-x-4">
-                  <a
-                    href="https://twitter.com/Letsdiskuss"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-2xl text-blue-400 hover:text-blue-600 transition-colors"
-                  >
-                    <FaTwitter />
-                  </a>
-                  <a
-                    href="https://www.facebook.com/Letsdiskuss-315820455578889/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-2xl text-blue-600 hover:text-blue-800 transition-colors"
-                  >
-                    <FaFacebookF />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/letsdiskuss/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-2xl text-pink-600 hover:text-pink-800 transition-colors"
-                  >
-                    <FaInstagram />
-                  </a>
-                  <a
-                    href="https://www.youtube.com/channel/UC8P36SywfXz8FI0ioSzJuew/videos"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-2xl text-red-600 hover:text-red-800 transition-colors"
-                  >
-                    <FaYoutube />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/lets-diskuss/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-2xl text-blue-700 hover:text-blue-900 transition-colors"
-                  >
-                    <FaLinkedinIn />
-                  </a>
-                </div>
-              </div>
+          <div className="space-y-8">
+            {/* Advertise Section */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Advertise with Us</h3>
+              <p className="text-gray-600 mb-2">Want to advertise with us?</p>
+              <p className="text-gray-600 mb-2">Or find out how else we can work with your brand?</p>
+              <p className="text-gray-600">
+                Let's talk! Connect at{' '}
+                <a href="mailto:submission@letsdiskuss.com" className="text-[#0000EE] hover:underline">
+                  submission@letsdiskuss.com
+                </a>{' '}
+                or call{' '}
+                <a href="tel:+918800259785" className="text-[#0000EE] hover:underline">
+                  +91 88002 59785
+                </a>
+              </p>
             </div>
+
+            {/* Partnership Section */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">To Become our Blogging Partner</h3>
+              <p className="text-gray-600">
+                Interested in partnering with us? Write to{' '}
+                <a href="mailto:contact@letsdiskuss.com" className="text-[#0000EE] hover:underline">
+                  contact@letsdiskuss.com
+                </a>
+              </p>
+            </div>
+
+            {/* Social Links */}
+            <div>
+              <h3 className="text-2xl text-gray-500 mb-4">Social Links</h3>
+              <div className="flex space-x-4">
+                <a href="https://twitter.com/Letsdiskuss" target="_blank" rel="noopener noreferrer"
+                   className="text-2xl text-blue-400 hover:text-blue-600 transition-colors">
+                  <FaTwitter />
+                </a>
+                <a href="https://www.facebook.com/Letsdiskuss-315820455578889/" target="_blank" rel="noopener noreferrer"
+                   className="text-2xl text-blue-600 hover:text-blue-800 transition-colors">
+                  <FaFacebookF />
+                </a>
+                <a href="https://www.instagram.com/letsdiskuss/" target="_blank" rel="noopener noreferrer"
+                   className="text-2xl text-pink-600 hover:text-pink-800 transition-colors">
+                  <FaInstagram />
+                </a>
+                <a href="https://www.youtube.com/channel/UC8P36SywfXz8FI0ioSzJuew/videos" target="_blank" rel="noopener noreferrer"
+                   className="text-2xl text-red-600 hover:text-red-800 transition-colors">
+                  <FaYoutube />
+                </a>
+                <a href="https://www.linkedin.com/company/lets-diskuss/" target="_blank" rel="noopener noreferrer"
+                   className="text-2xl text-blue-700 hover:text-blue-900 transition-colors">
+                  <FaLinkedinIn />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
   );
 }

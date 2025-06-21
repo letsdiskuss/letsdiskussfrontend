@@ -172,85 +172,140 @@ export default function Page() {
 {/* 4th  Section------------------------------------------------------------- */}  
       
 <div className="bg-gray-100 py-16 px-4">
-  <h2 className="text-3xl text-center text-gray-900 mb-12">
+  <h2 className="text-3xl  text-center text-gray-900 mb-12">
     Our Pricing
   </h2>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl mx-auto">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
     {/* Basic Package */}
-    <div className="bg-white rounded-md shadow-md p-5 text-center">
-      <h3 className="text-xl font-bold text-gray-800 mb-6">
-        Basic Package Guest Post
-      </h3>
-      <ul className="text-left text-sm text-gray-700 space-y-2">
-        {[
-          "Invaluable Aspects of Our Guest Posting Packages",
-          "DA 62",
-          "DR 49",
-          "800+ Content-Length (in Words)",
-          <strong key="bp1">1 do follow Link in Each Post</strong>,
-          "Search Engines Friendly Content",
-          "Social Sharing",
-          "Increase Brand Awareness",
-          "Increase Website Authority",
-          "Quality Traffic",
-          "Spamming Score below 2 %",
-          "8 maximum posts",
-          "Turnaround Time – 1 Working Day",
-        ].map((point, idx) => (
-          <li key={idx} className="flex items-start gap-2">
-            <span className="text-green-600">✔️</span>
-            <span>{point}</span>
-          </li>
-        ))}
-      </ul>
-      <button className="mt-6 bg-teal-900 text-white px-6 py-2 rounded hover:bg-teal-800 transition">
-        Buy At $350/Month
-      </button>
+    <div className="bg-white rounded-md shadow-md p-8 flex flex-col justify-between">
+      <div>
+        <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">
+          Basic Package Guest Post
+        </h3>
+        <ul className="text-left text-sm text-gray-700 space-y-2">
+          {[
+            "Invaluable Aspects of Our Guest Posting Packages",
+            "DA 62",
+            "DR 49",
+            "800+ Content-Length (in Words)",
+            <strong key="bp1">1 do follow Link in Each Post</strong>,
+            "Search Engines Friendly Content",
+            "Social Sharing",
+            "Increase Brand Awareness",
+            "Increase Website Authority",
+            "Quality Traffic",
+            "Spamming Score below 2 %",
+            "8 maximum posts",
+            "Turnaround Time – 1 Working Day",
+          ].map((point, idx) => (
+            <li key={idx} className="flex items-start gap-2">
+              <span className="text-green-600">✔️</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="mt-6 text-center">
+        <button className="bg-teal-900 text-white px-6 py-2 rounded hover:bg-teal-800 transition">
+          Buy At $350/Month
+        </button>
+      </div>
     </div>
 
     {/* Premium Package */}
-    <div className="bg-white rounded-md shadow-md p-5 text-center">
-      <h3 className="text-xl font-bold text-gray-800 mb-6">
-        Premium Package Guest Post
-      </h3>
-      <ul className="text-left text-sm text-gray-700 space-y-2">
-        {[
-          "Priceless Features of Our Packages for Guest Posting",
-          "DA 62",
-          "DR 49",
-          "800+ Content-Length (in Words)",
-          <strong key="pp1">2 Links in Each Post</strong>,
-          "Search Engines Friendly Content",
-          "Social Sharing",
-          "Increase Brand Awareness",
-          "Increase Website Authority",
-          "Quality Traffic",
-          "Spamming Score below 2 %",
-          "8 maximum posts",
-          "Turnaround Time – 1 Working Day",
-          "Total: - 10 blog post and 15 link inserts in existing articles",
-        ].map((point, idx) => (
-          <li key={idx} className="flex items-start gap-2">
-            <span className="text-green-600">✔️</span>
-            <span>{point}</span>
-          </li>
-        ))}
-      </ul>
-      <button className="mt-6 bg-teal-900 text-white px-6 py-2 rounded hover:bg-teal-800 transition">
-        Buy At $500/Month
-      </button>
+    <div className="bg-white rounded-md shadow-md p-8 flex flex-col justify-between">
+      <div>
+        <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">
+          Premium Package Guest Post
+        </h3>
+        <ul className="text-left text-sm text-gray-700 space-y-2">
+          {[
+            "Priceless Features of Our Packages for Guest Posting",
+            "DA 62",
+            "DR 49",
+            "800+ Content-Length (in Words)",
+            <strong key="pp1">2 Links in Each Post</strong>,
+            "Search Engines Friendly Content",
+            "Social Sharing",
+            "Increase Brand Awareness",
+            "Increase Website Authority",
+            "Quality Traffic",
+            "Spamming Score below 2 %",
+            "8 maximum posts",
+            "Turnaround Time – 1 Working Day",
+            "Total: - 10 blog post and 15 link inserts in existing articles",
+          ].map((point, idx) => (
+            <li key={idx} className="flex items-start gap-2">
+              <span className="text-green-600">✔️</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="mt-6 text-center">
+        <button className="bg-teal-900 text-white px-6 py-2 rounded hover:bg-teal-800 transition">
+          Buy At $500/Month
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
+
       
 {/* 5th  Section------------------------------------------------------------- */} 
-      <div className="bg-red-500 text-white py-10 text-center">Page 5</div>
+      <div className="bg-white py-16 px-4">
+  <h2 className="text-3xl  text-center text-gray-900 mb-10">
+    Our Methods
+  </h2>
+  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+    {/* Left Image */}
+    <div className="flex justify-center">
+      <img
+        src="/image5.svg"
+        alt="Our Methods"
+        className="w-[40%] h-[50%] max-w-md"
+      />
+    </div>
+
+    {/* Right Text */}
+    <div className="text-black text-sm space-y-6">
+      <p>
+        <span className="font-semibold">Consultation:</span> To create a guest blogging plan that is specific to your needs, we must get to know your objectives, target market, and specialty.
+      </p>
+      <p>
+        <span className="font-semibold ">Research & Outreach:</span> To find pertinent websites and guest blogging possibilities, our staff performs in-depth research. After that, we get in touch with website owners to present them with concepts for excellent content that appeal to their readership.
+      </p>
+      <p>
+        <span className="font-semibold">Material Creation:</span> After securing a guest blogging opportunity, our team of knowledgeable writers will produce interesting and educational material that highlights your experience and benefits readers.
+      </p>
+      <p>
+        <span className="font-semibold">Publication & Marketing:</span> We collaborate closely with website designers to guarantee the prompt publication of your guest pieces. We increase the reach and impact of your material by promoting it via email newsletters, social media, and other channels after it is published.
+      </p>
+      <p>
+        <span className="font-semibold">Performance Monitoring:</span> We offer frequent reports and analytics to monitor traffic, interaction, and backlink metrics related to your guest articles. This enables us to assess the effectiveness of our guest posting initiatives and make any necessary data-driven improvements.
+      </p>
+    </div>
+  </div>
+</div>
+
 
       
 {/* 6th  Section------------------------------------------------------------- */} 
-      <div className="bg-green-700 text-white py-10 text-center">Page 6</div>
+     <div className="bg-teal-900 py-16 px-4 text-center text-white">
+  <h2 className="text-3xl font-bold mb-4">Start Now!</h2>
+  <p className="max-w-7xl mx-auto mb-6 text-sm md:text-base">
+    Are you prepared to leverage smart guest posting to further elevate your online presence?
+    Get in touch with us right now to find out more about our guest posting options and how we
+    can support your marketing objectives. Let's Diskuss is your go-to resource for excellent
+    guest posting that produces outcomes.
+  </p>
+  <button className="bg-teal-700 hover:bg-teal-600 text-white py-2 px-6 rounded shadow">
+    Get Started Today
+  </button>
+</div>
+
     </div>
   );
 }

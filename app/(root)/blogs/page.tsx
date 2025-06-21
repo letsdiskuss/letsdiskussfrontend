@@ -1,162 +1,309 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, TrendingUp, Users, MessageSquare, ArrowLeft, Grid, List, Filter, SortAsc } from 'lucide-react';
+import { 
+  Search, 
+  TrendingUp, 
+  Users, 
+  MessageSquare, 
+  Star, 
+  ArrowRight, 
+  ChevronRight, 
+  Clock, 
+  ThumbsUp, 
+  Eye, 
+  Bookmark,
+  Bell,
+  HelpCircle,
+  BellOff,
+  
+  Image,
+  Phone,
+  Edit,
+  Wrench,
+  MessageCircle,
+  Gamepad2,
+  Heart,
+  ChefHat,
+  Trophy,
+  GraduationCap,
+  Plus,
+  Twitter,
+  Facebook,
+  Instagram,
+  Youtube,
+  Linkedin,
+  ChevronLeft
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { IoMdHome } from 'react-icons/io';
-import { IoImages } from 'react-icons/io5';
-import { FaCommentAlt, FaPhoneAlt, FaPen } from 'react-icons/fa';
-import { FaBell } from "react-icons/fa";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { FaUserCircle } from "react-icons/fa";
-import { BiSolidBellOff } from "react-icons/bi";
-import { IoMdHelpCircle } from "react-icons/io";
-import { Phone } from 'lucide-react';
-import { Edit } from 'lucide-react';
-import { Bell } from 'lucide-react';
-import { Image } from 'lucide-react';
-
-import { TrendingUp as TrendingUpIcon } from 'lucide-react';
-import Header from '@/src/components/Header';
+import { BiSolidBellOff } from 'react-icons/bi';
+import { IoMdHelpCircle } from 'react-icons/io';
 
 
-const allCategories = [
+const categories = [
+  { name: 'Science & Technology', icon: Wrench },
+  { name: 'Current Topics', icon: MessageCircle },
+  { name: 'Entertainment / Lifestyle', icon: Gamepad2 },
+  { name: 'Health & Beauty', icon: Heart },
+  { name: 'Food / Cooking', icon: ChefHat },
+  { name: 'Astrology', icon: Star },
+  { name: 'Sports', icon: Trophy },
+  { name: 'Education', icon: GraduationCap },
+  { name: 'Others', icon: Plus }
+];
+
+
+
+const socialLinks = [
+  { name: 'Twitter', icon: Twitter, color: 'bg-blue-400' },
+  { name: 'Facebook', icon: Facebook, color: 'bg-blue-600' },
+  { name: 'Instagram', icon: Instagram, color: 'bg-pink-500' },
+  { name: 'YouTube', icon: Youtube, color: 'bg-red-500' },
+  { name: 'LinkedIn', icon: Linkedin, color: 'bg-blue-700' }
+];
+
+const footerLinks = ['Terms', 'Privacy', 'Disclaimer', 'About', 'Faq'];
+
+const topDiscussions = [
+  "What is the best cursive font in Microsoft Word?",
+  "Who is naomi burton-crews and What about her family?",
+  "What are the latest chapters in Physical, Organic and Inorganic chemistry for class 11 and 12 of CBSE?",
+  "Elaine Starchuk: Where is Tommy Lee's first wife now?"
+];
+
+const featuredDiscussions = [
   {
     id: 1,
-    name: 'Technology',
-    description: 'Discuss the latest in tech, programming, artificial intelligence, software development, and digital innovation.',
-    icon: '💻',
-    threads: 1247,
-    posts: 8953,
-    members: 3421,
-    color: 'bg-blue-500',
-    trending: true,
-    subcategories: ['Web Development', 'Mobile Apps', 'AI & Machine Learning', 'DevOps', 'Cybersecurity']
+    title: 'The Future of AI in Web Development: A Comprehensive Analysis',
+    author: {
+      name: 'Sarah Chen',
+      avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?w=100',
+      reputation: 2845,
+      badge: 'Expert'
+    },
+    category: 'Technology',
+    replies: 47,
+    views: 1203,
+    likes: 89,
+    createdAt: '2 hours ago',
+    isPinned: true,
+    hasNewReplies: true,
+    excerpt: 'Exploring how artificial intelligence is revolutionizing the way we build and maintain web applications...'
   },
   {
     id: 2,
-    name: 'Business & Entrepreneurship',
-    description: 'Share insights about startups, business strategies, marketing, finance, and career growth opportunities.',
-    icon: '💼',
-    threads: 892,
-    posts: 5674,
-    members: 2156,
-    color: 'bg-green-500',
-    trending: false,
-    subcategories: ['Startups', 'Marketing', 'Finance', 'Leadership', 'Remote Work']
+    title: 'Building a Successful Remote Team: Lessons from 5 Years of Experience',
+    author: {
+      name: 'Marcus Johnson',
+      avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?w=100',
+      reputation: 1967,
+      badge: 'Mentor'
+    },
+    category: 'Business & Entrepreneurship',
+    replies: 32,
+    views: 856,
+    likes: 64,
+    createdAt: '4 hours ago',
+    isPinned: false,
+    hasNewReplies: true,
+    excerpt: 'Sharing practical insights on managing distributed teams, communication strategies, and building culture...'
   },
   {
     id: 3,
-    name: 'Creative Arts',
-    description: 'Showcase your creativity and discuss design, photography, writing, music, and digital media.',
-    icon: '🎨',
-    threads: 634,
-    posts: 3821,
-    members: 1789,
-    color: 'bg-purple-500',
-    trending: true,
-    subcategories: ['Graphic Design', 'Photography', 'Writing', 'Music', 'Video Production']
+    title: 'Minimalist Design Principles That Actually Work in 2024',
+    author: {
+      name: 'Elena Rodriguez',
+      avatar: 'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?w=100',
+      reputation: 3241,
+      badge: 'Pro Designer'
+    },
+    category: 'Creative Arts',
+    replies: 28,
+    views: 692,
+    likes: 52,
+    createdAt: '6 hours ago',
+    isPinned: false,
+    hasNewReplies: false,
+    excerpt: 'Breaking down the core principles of minimalist design and how to apply them effectively...'
   },
   {
     id: 4,
-    name: 'Health & Lifestyle',
-    description: 'Discuss wellness, fitness, nutrition, mental health, and lifestyle improvement tips.',
-    icon: '🏃',
-    threads: 456,
-    posts: 2987,
-    members: 1543,
-    color: 'bg-orange-500',
-    trending: false,
-    subcategories: ['Fitness', 'Nutrition', 'Mental Health', 'Wellness', 'Self-Care']
+    title: 'Mental Health in the Digital Age: Finding Balance',
+    author: {
+      name: 'Dr. Michael Park',
+      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?w=100',
+      reputation: 4156,
+      badge: 'Healthcare Expert'
+    },
+    category: 'Health & Lifestyle',
+    replies: 73,
+    views: 2341,
+    likes: 127,
+    createdAt: '1 day ago',
+    isPinned: false,
+    hasNewReplies: true,
+    excerpt: 'Discussing the impact of technology on mental health and practical strategies for digital wellness...'
   },
   {
-    id: 5,
-    name: 'Science & Education',
-    description: 'Explore scientific discoveries, research findings, educational content, and academic discussions.',
-    icon: '🔬',
-    threads: 723,
-    posts: 4532,
-    members: 2087,
-    color: 'bg-teal-500',
-    trending: true,
-    subcategories: ['Research', 'Physics', 'Biology', 'Chemistry', 'Mathematics']
+   id: 5,
+    title: 'The Future of AI in Web Development: A Comprehensive Analysis',
+    author: {
+      name: 'Sarah Chen',
+      avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?w=100',
+      reputation: 2845,
+      badge: 'Expert'
+    },
+    category: 'Technology',
+    replies: 47,
+    views: 1203,
+    likes: 89,
+    createdAt: '2 hours ago',
+    isPinned: true,
+    hasNewReplies: true,
+    excerpt: 'Exploring how artificial intelligence is revolutionizing the way we build and maintain web applications...'
   },
   {
     id: 6,
-    name: 'General Discussion',
-    description: 'Open discussions about current events, philosophy, culture, and everyday life topics.',
-    icon: '💬',
-    threads: 2145,
-    posts: 12678,
-    members: 4532,
-    color: 'bg-gray-500',
-    trending: false,
-    subcategories: ['Current Events', 'Philosophy', 'Culture', 'Travel', 'Food']
+    title: 'Building a Successful Remote Team: Lessons from 5 Years of Experience',
+    author: {
+      name: 'Marcus Johnson',
+      avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?w=100',
+      reputation: 1967,
+      badge: 'Mentor'
+    },
+    category: 'Business & Entrepreneurship',
+    replies: 32,
+    views: 856,
+    likes: 64,
+    createdAt: '4 hours ago',
+    isPinned: false,
+    hasNewReplies: true,
+    excerpt: 'Sharing practical insights on managing distributed teams, communication strategies, and building culture...'
   },
   {
     id: 7,
-    name: 'Gaming',
-    description: 'Discuss video games, gaming culture, reviews, tips, and the latest in the gaming industry.',
-    icon: '🎮',
-    threads: 943,
-    posts: 6721,
-    members: 2876,
-    color: 'bg-red-500',
-    trending: true,
-    subcategories: ['PC Gaming', 'Console Gaming', 'Mobile Games', 'Esports', 'Game Development']
+    title: 'Minimalist Design Principles That Actually Work in 2024',
+    author: {
+      name: 'Elena Rodriguez',
+      avatar: 'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?w=100',
+      reputation: 3241,
+      badge: 'Pro Designer'
+    },
+    category: 'Creative Arts',
+    replies: 28,
+    views: 692,
+    likes: 52,
+    createdAt: '6 hours ago',
+    isPinned: false,
+    hasNewReplies: false,
+    excerpt: 'Breaking down the core principles of minimalist design and how to apply them effectively...'
   },
   {
     id: 8,
-    name: 'Sports & Fitness',
-    description: 'Talk about sports, fitness routines, athletic performance, and recreational activities.',
-    icon: '⚽',
-    threads: 567,
-    posts: 3456,
-    members: 1987,
-    color: 'bg-indigo-500',
-    trending: false,
-    subcategories: ['Football', 'Basketball', 'Training', 'Nutrition', 'Equipment']
+    title: 'Mental Health in the Digital Age: Finding Balance',
+    author: {
+      name: 'Dr. Michael Park',
+      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?w=100',
+      reputation: 4156,
+      badge: 'Healthcare Expert'
+    },
+    category: 'Health & Lifestyle',
+    replies: 73,
+    views: 2341,
+    likes: 127,
+    createdAt: '1 day ago',
+    isPinned: false,
+    hasNewReplies: true,
+    excerpt: 'Discussing the impact of technology on mental health and practical strategies for digital wellness...'
   }
 ];
 
-export default function Categories() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [sortBy, setSortBy] = useState('popularity');
-  const [filterBy, setFilterBy] = useState('all');
 
-  const filteredCategories = allCategories
-    .filter(category => {
-      const matchesSearch = category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           category.description.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesFilter = filterBy === 'all' || 
-                           (filterBy === 'trending' && category.trending) ||
-                           (filterBy === 'popular' && category.threads > 800);
-      return matchesSearch && matchesFilter;
-    })
-    .sort((a, b) => {
-      switch (sortBy) {
-        case 'alphabetical':
-          return a.name.localeCompare(b.name);
-        case 'threads':
-          return b.threads - a.threads;
-        case 'members':
-          return b.members - a.members;
-        default: // popularity
-          return (b.threads + b.posts) - (a.threads + a.posts);
-      }
-    });
+
+export default function Home() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [activeTab, setActiveTab] = useState("Latest Questions");
+
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
-  <div className="min-h-screen bg-gray-50">
-            {/* Header */}
-     {/* Header - Fixed */}
-  
-     {/* Hero Section */}
+    
+  <div className="flex min-h-screen">
+
+    {/* 1st Div -----------------------------------*/}
+
+  {/* Left Sidebar - 30% */}
+  <div className="w-[20%] bg-white border-r border-gray-200 h-screen overflow-y-auto fixed left-5 top-0">
+    <div className="p-4 border-b border-gray-200 mt-20"> {/* Reduced from mt-32 to mt-20 */}
+      <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
+        <MessageCircle className="w-4 h-4" />
+        <span>Become A Blogger</span>
+      </Button>
+    </div>
+
+    <div className="p-4 border-b border-gray-200">
+      <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+        <div className="w-4 h-4 bg-gray-400 rounded"></div>
+        <span>Category</span>
+      </h3>
+      <div className="space-y-2">
+        {categories.map((category, index) => {
+          const IconComponent = category.icon;
+          return (
+            <div key={index} className="flex items-center space-x-3 py-2 px-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors">
+              <IconComponent className="w-4 h-4 text-gray-600" />
+              <span className="text-sm text-gray-700">{category.name}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <div className="p-4 border-b border-gray-200">
+      <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
+      <div className="grid grid-cols-3 gap-3">
+        {socialLinks.map((social, index) => {
+          const IconComponent = social.icon;
+          return (
+            <div key={index} className={`${social.color} p-3 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}>
+              <IconComponent className="w-5 h-5 text-white" />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <div className="p-4">
+      <div className="flex flex-wrap gap-4 text-xs">
+        {footerLinks.map((link, index) => (
+          <Link key={index} href="#" className="text-blue-600 hover:text-blue-800 transition-colors">
+            {link}
+          </Link>
+        ))}
+      </div>
+    </div>
+  </div>
+
+
+{/* 2nd div------------------------------- */}
+
+  {/* Main Content - 50% */}
+  <div className="flex-1 ml-[20%] mr-[20%] bg-gray-50 min-h-screen fixed">
+
+    {/* Top Search Bar */}
+    <div className="top-15 left-[25%] right-[25%] z-40 bg-white shadow-sm border-b border-gray-200 ">
+ 
+     {/* Blog Header Section */}
       
 <div className="bg-white shadow-sm">
   {/* Top Navbar */}
@@ -181,205 +328,101 @@ export default function Categories() {
       </Button>
     </div>
   </div>
+  </div>
 
-  {/* Bottom Tab Menu */}
-  <div className="flex space-x-6 px-4 py-2 border-t bg-white">
+      <div className="flex space-x-6 px-4 py-2 bg-white">
     
     <div className="text-gray-700 text-sm cursor-pointer hover:text-black">Recent Posts</div>
     <div className="text-gray-700 text-sm cursor-pointer hover:text-black">Popular Posts</div>
-    
-  </div>
-</div>
+    </div>
+    </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-        {/* Controls */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-            <div className="flex-1 max-w-md">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                <Input
-                  placeholder="Search categories..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 bg-gray-50 border-0 focus:bg-white transition-colors"
-                />
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Select value={filterBy} onValueChange={setFilterBy}>
-                <SelectTrigger className="w-32">
-                  <Filter className="h-4 w-4 mr-2" />
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All</SelectItem>
-                  <SelectItem value="trending">Trending</SelectItem>
-                  <SelectItem value="popular">Popular</SelectItem>
-                </SelectContent>
-              </Select>
-              
-              <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-36">
-                  <SortAsc className="h-4 w-4 mr-2" />
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="popularity">Popularity</SelectItem>
-                  <SelectItem value="alphabetical">A-Z</SelectItem>
-                  <SelectItem value="threads">Most Threads</SelectItem>
-                  <SelectItem value="members">Most Members</SelectItem>
-                </SelectContent>
-              </Select>
-
-              <div className="flex bg-gray-100 rounded-lg p-1">
-                <Button
-                  variant={viewMode === 'grid' ? 'default' : 'ghost'}
-                  size="sm"
-                  onClick={() => setViewMode('grid')}
-                  className="h-8 w-8 p-0"
-                >
-                  <Grid className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant={viewMode === 'list' ? 'default' : 'ghost'}
-                  size="sm"
-                  onClick={() => setViewMode('list')}
-                  className="h-8 w-8 p-0"
-                >
-                  <List className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Categories Grid/List */}
-        {viewMode === 'grid' ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCategories.map((category) => (
-              <Card key={category.id} className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-0 bg-white overflow-hidden">
-                <CardContent className="p-0">
-                  <div className={`h-20 ${category.color} bg-gradient-to-r relative overflow-hidden`}>
-                    <div className="absolute inset-0 bg-black/10"></div>
-                    <div className="absolute top-4 left-6 text-white">
-                      <span className="text-2xl">{category.icon}</span>
-                    </div>
-                    {category.trending && (
-                      <div className="absolute top-4 right-4">
-                        <Badge className="bg-white/20 text-white border-white/30">
-                          <TrendingUp className="w-3 h-3 mr-1" />
-                          Trending
-                        </Badge>
-                      </div>
+    <div className="max-w-4xl mx-auto pt-0">
+      <div className="space-y-4">
+        {featuredDiscussions.map((discussion) => (
+          <Card key={discussion.id} className="group hover:shadow-lg transition-all duration-300 cursor-pointer border-0 bg-white">
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-4">
+                <Avatar className="w-12 h-12 ring-2 ring-gray-100">
+                  <AvatarImage src={discussion.author.avatar} alt={discussion.author.name} />
+                  <AvatarFallback>{discussion.author.name[0]}</AvatarFallback>
+                </Avatar>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center space-x-2 mb-2">
+                    {discussion.isPinned && (
+                      <Badge className="bg-blue-100 text-blue-700 text-xs">
+                        <Star className="w-3 h-3 mr-1" />
+                        Pinned
+                      </Badge>
+                    )}
+                    <Badge variant="outline" className="text-xs">{discussion.category}</Badge>
+                    {discussion.hasNewReplies && (
+                      <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                     )}
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                      {category.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">{category.description}</p>
-                    
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-1">
-                        {category.subcategories.slice(0, 3).map((sub, index) => (
-                          <Badge key={index} variant="secondary" className="text-xs">
-                            {sub}
-                          </Badge>
-                        ))}
-                        {category.subcategories.length > 3 && (
-                          <Badge variant="secondary" className="text-xs">
-                            +{category.subcategories.length - 3} more
-                          </Badge>
-                        )}
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2 line-clamp-2">
+                    {discussion.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">{discussion.excerpt}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                      <span className="font-medium text-gray-700">{discussion.author.name}</span>
+                      <Badge variant="secondary" className="text-xs">{discussion.author.badge}</Badge>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-3 h-3" />
+                        <span>{discussion.createdAt}</span>
                       </div>
-                      
-                      <div className="grid grid-cols-3 gap-4 text-center text-sm">
-                        <div>
-                          <div className="font-semibold text-gray-900">{category.threads.toLocaleString()}</div>
-                          <div className="text-gray-500 text-xs">Threads</div>
-                        </div>
-                        <div>
-                          <div className="font-semibold text-gray-900">{category.posts.toLocaleString()}</div>
-                          <div className="text-gray-500 text-xs">Posts</div>
-                        </div>
-                        <div>
-                          <div className="font-semibold text-gray-900">{category.members.toLocaleString()}</div>
-                          <div className="text-gray-500 text-xs">Members</div>
-                        </div>
+                    </div>
+                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                      <div className="flex items-center space-x-1">
+                        <MessageSquare className="w-4 h-4" />
+                        <span>{discussion.replies}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Eye className="w-4 h-4" />
+                        <span>{discussion.views}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <ThumbsUp className="w-4 h-4" />
+                        <span>{discussion.likes}</span>
                       </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {filteredCategories.map((category) => (
-              <Card key={category.id} className="group hover:shadow-lg transition-all duration-300 cursor-pointer border-0 bg-white">
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-6">
-                    <div className={`w-16 h-16 rounded-xl ${category.color} flex items-center justify-center text-white text-2xl`}>
-                      {category.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                          {category.name}
-                        </h3>
-                        {category.trending && (
-                          <Badge className="bg-orange-100 text-orange-700">
-                            <TrendingUp className="w-3 h-3 mr-1" />
-                            Trending
-                          </Badge>
-                        )}
-                      </div>
-                      <p className="text-gray-600 mb-3 line-clamp-2">{category.description}</p>
-                      <div className="flex flex-wrap gap-1">
-                        {category.subcategories.slice(0, 5).map((sub, index) => (
-                          <Badge key={index} variant="secondary" className="text-xs">
-                            {sub}
-                          </Badge>
-                        ))}
-                        {category.subcategories.length > 5 && (
-                          <Badge variant="secondary" className="text-xs">
-                            +{category.subcategories.length - 5} more
-                          </Badge>
-                        )}
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-8 text-sm text-gray-500">
-                      <div className="text-center">
-                        <div className="font-semibold text-gray-900">{category.threads.toLocaleString()}</div>
-                        <div>Threads</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="font-semibold text-gray-900">{category.posts.toLocaleString()}</div>
-                        <div>Posts</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="font-semibold text-gray-900">{category.members.toLocaleString()}</div>
-                        <div>Members</div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )}
-
-        {filteredCategories.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-gray-400 text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No categories found</h3>
-            <p className="text-gray-600">Try adjusting your search or filter criteria</p>
-          </div>
-        )}
-        </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
-  
+  </div>
+
+{/* 3rd div -------------------------------------------------------- */}
+
+  {/* Right Sidebar - 20% */}
+  <div className="w-[20%] bg-white border-l border-gray-200 h-screen overflow-y-auto fixed right-1 top-0">
+    <div className="p-4 border-b border-gray-200 mt-32">
+      <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+        <div className="w-4 h-4 bg-gray-400 rounded"></div>
+        <span>Top Discussions</span>
+      </h3>
+      <div className="space-y-4">
+        {topDiscussions.map((discussion, index) => (
+          <div key={index} className="flex items-start space-x-2">
+            <Star className="w-4 h-4 text-yellow-500 mt-1 flex-shrink-0" />
+            <p className="text-sm text-gray-700 hover:text-blue-600 cursor-pointer transition-colors">
+              {discussion}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
   );
 }

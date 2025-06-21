@@ -148,13 +148,82 @@ const featuredDiscussions = [
     isPinned: false,
     hasNewReplies: true,
     excerpt: 'Discussing the impact of technology on mental health and practical strategies for digital wellness...'
+  },
+  {
+   id: 5,
+    title: 'The Future of AI in Web Development: A Comprehensive Analysis',
+    author: {
+      name: 'Sarah Chen',
+      avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?w=100',
+      reputation: 2845,
+      badge: 'Expert'
+    },
+    category: 'Technology',
+    replies: 47,
+    views: 1203,
+    likes: 89,
+    createdAt: '2 hours ago',
+    isPinned: true,
+    hasNewReplies: true,
+    excerpt: 'Exploring how artificial intelligence is revolutionizing the way we build and maintain web applications...'
+  },
+  {
+    id: 6,
+    title: 'Building a Successful Remote Team: Lessons from 5 Years of Experience',
+    author: {
+      name: 'Marcus Johnson',
+      avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?w=100',
+      reputation: 1967,
+      badge: 'Mentor'
+    },
+    category: 'Business & Entrepreneurship',
+    replies: 32,
+    views: 856,
+    likes: 64,
+    createdAt: '4 hours ago',
+    isPinned: false,
+    hasNewReplies: true,
+    excerpt: 'Sharing practical insights on managing distributed teams, communication strategies, and building culture...'
+  },
+  {
+    id: 7,
+    title: 'Minimalist Design Principles That Actually Work in 2024',
+    author: {
+      name: 'Elena Rodriguez',
+      avatar: 'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?w=100',
+      reputation: 3241,
+      badge: 'Pro Designer'
+    },
+    category: 'Creative Arts',
+    replies: 28,
+    views: 692,
+    likes: 52,
+    createdAt: '6 hours ago',
+    isPinned: false,
+    hasNewReplies: false,
+    excerpt: 'Breaking down the core principles of minimalist design and how to apply them effectively...'
+  },
+  {
+    id: 8,
+    title: 'Mental Health in the Digital Age: Finding Balance',
+    author: {
+      name: 'Dr. Michael Park',
+      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?w=100',
+      reputation: 4156,
+      badge: 'Healthcare Expert'
+    },
+    category: 'Health & Lifestyle',
+    replies: 73,
+    views: 2341,
+    likes: 127,
+    createdAt: '1 day ago',
+    isPinned: false,
+    hasNewReplies: true,
+    excerpt: 'Discussing the impact of technology on mental health and practical strategies for digital wellness...'
   }
 ];
 
-const trendingTopics = [
-  'Next.js 14', 'AI Ethics', 'Remote Work', 'Crypto Regulation', 'Climate Tech', 
-  'Web3 Development', 'Mental Health', 'Startup Funding', 'UX Design', 'Data Privacy'
-];
+
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -235,10 +304,10 @@ export default function Home() {
 {/* 2nd div------------------------------- */}
 
   {/* Main Content - 50% */}
-  <div className="flex-1 ml-[20%] mr-[20%] bg-gray-50 min-h-screen">
+  <div className="flex-1 ml-[20%] mr-[20%] bg-gray-50 min-h-screen fixed">
 
     {/* Top Search Bar */}
-    <div className="top-10 left-[25%] right-[25%] z-40 bg-white shadow-sm border-b border-gray-200 fixed">
+    <div className="top-15 left-[25%] right-[25%] z-40 bg-white shadow-sm border-b border-gray-200 ">
       <div className="flex flex-wrap items-center justify-between px-6 py-2 border-b border-gray-100 gap-4">
         <div className="relative flex-1 min-w-[200px]">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -271,13 +340,7 @@ export default function Home() {
       </div>
     </div>
 
-    {/* Featured Discussions */}
-    <div className="max-w-4xl mx-auto p-6 pt-40">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Featured Discussions</h2>
-        <Button variant="outline" size="sm">View All</Button>
-      </div>
-
+    <div className="max-w-4xl mx-auto pt-0">
       <div className="space-y-4">
         {featuredDiscussions.map((discussion) => (
           <Card key={discussion.id} className="group hover:shadow-lg transition-all duration-300 cursor-pointer border-0 bg-white">
