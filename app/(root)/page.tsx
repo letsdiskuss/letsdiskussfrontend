@@ -44,6 +44,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { FaUserCircle } from "react-icons/fa";
 
 
+
 const categories = [
   { name: 'Science & Technology', icon: Wrench },
   { name: 'Current Topics', icon: MessageCircle },
@@ -173,214 +174,195 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header - Fixed */}
+    
+  <div className="flex min-h-screen">
 
+    {/* 1st Div -----------------------------------*/}
 
-      {/* Search and Navigation Bar - Fixed */}
-      <div className="fixed top-16 left-0 right-0 z-40 bg-white shadow-sm border-b border-gray-200">
-        {/* Top Search Bar */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-          {/* Search Bar */}
-          <div className="relative w-full max-w-3xl">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-            <Input
-              placeholder="Search a question, user, blog or post"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-            />
-          </div>
+  {/* Left Sidebar - 30% */}
+  <div className="w-[20%] bg-white border-r border-gray-200 h-screen overflow-y-auto fixed left-5 top-0">
+    <div className="p-4 border-b border-gray-200 mt-20"> {/* Reduced from mt-32 to mt-20 */}
+      <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
+        <MessageCircle className="w-4 h-4" />
+        <span>Become A Blogger</span>
+      </Button>
+    </div>
 
-          {/* Icons + Button */}
-          <div className="flex items-center space-x-4 ml-4">
-            <BellOff className="text-red-600 cursor-pointer hover:text-red-700 transition-colors" />
-            <HelpCircle className="text-gray-600 cursor-pointer hover:text-gray-700 transition-colors" />
-            <Button className="bg-teal-800 text-white hover:bg-[#20565c] px-4 py-2 text-sm rounded-md font-medium">
-              Ask Question
-            </Button>
-          </div>
-        </div>
-
-        {/* Bottom Tab Menu */}
-        <div className="flex space-x-6 px-4 py-2 bg-white">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`text-sm font-medium transition-colors ${
-                activeTab === tab
-                  ? 'bg-teal-800 text-white px-4 py-2 rounded-tl-full rounded-br-md'
-                  : 'text-gray-700 hover:text-black px-2 py-2'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Layout - Add top margin to account for fixed headers */}
-      <div className="flex pt-32">
-        {/* Left Sidebar */}
-        <div className="w-80 bg-white border-r border-gray-200 h-screen overflow-y-auto fixed left-0 top-32">
-          {/* Become A Blogger Button */}
-          <div className="p-4 border-b border-gray-200">
-            <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
-              <MessageCircle className="w-4 h-4" />
-              <span>Become A Blogger</span>
-            </Button>
-          </div>
-
-          {/* Categories Section */}
-          <div className="p-4 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gray-400 rounded"></div>
-              <span>Category</span>
-            </h3>
-            <div className="space-y-2">
-              {categories.map((category, index) => {
-                const IconComponent = category.icon;
-                return (
-                  <div key={index} className="flex items-center space-x-3 py-2 px-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors">
-                    <IconComponent className="w-4 h-4 text-gray-600" />
-                    <span className="text-sm text-gray-700">{category.name}</span>
-                  </div>
-                );
-              })}
+    <div className="p-4 border-b border-gray-200">
+      <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+        <div className="w-4 h-4 bg-gray-400 rounded"></div>
+        <span>Category</span>
+      </h3>
+      <div className="space-y-2">
+        {categories.map((category, index) => {
+          const IconComponent = category.icon;
+          return (
+            <div key={index} className="flex items-center space-x-3 py-2 px-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors">
+              <IconComponent className="w-4 h-4 text-gray-600" />
+              <span className="text-sm text-gray-700">{category.name}</span>
             </div>
-          </div>
-
-          {/* Contest Questions Section */}
-         
-
-          {/* Find Us Section */}
-          <div className="p-4 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
-            <div className="grid grid-cols-3 gap-3">
-              {socialLinks.map((social, index) => {
-                const IconComponent = social.icon;
-                return (
-                  <div key={index} className={`${social.color} p-3 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}>
-                    <IconComponent className="w-5 h-5 text-white" />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Footer Links */}
-          <div className="p-4">
-            <div className="flex flex-wrap gap-4 text-xs">
-              {footerLinks.map((link, index) => (
-                <Link key={index} href="#" className="text-blue-600 hover:text-blue-800 transition-colors">
-                  {link}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Main Content */}
-        <div className="flex-1 ml-80 mr-80 bg-gray-50 min-h-screen">
-          <div className="max-w-4xl mx-auto p-6">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">Featured Discussions</h2>
-              <Button variant="outline" size="sm">View All</Button>
-            </div>
-
-            {/* Discussions List */}
-            <div className="space-y-4">
-              {featuredDiscussions.map((discussion) => (
-                <Card key={discussion.id} className="group hover:shadow-lg transition-all duration-300 cursor-pointer border-0 bg-white">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <Avatar className="w-12 h-12 ring-2 ring-gray-100">
-                        <AvatarImage src={discussion.author.avatar} alt={discussion.author.name} />
-                        <AvatarFallback>{discussion.author.name[0]}</AvatarFallback>
-                      </Avatar>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center space-x-2 mb-2">
-                          {discussion.isPinned && (
-                            <Badge className="bg-blue-100 text-blue-700 text-xs">
-                              <Star className="w-3 h-3 mr-1" />
-                              Pinned
-                            </Badge>
-                          )}
-                          <Badge variant="outline" className="text-xs">{discussion.category}</Badge>
-                          {discussion.hasNewReplies && (
-                            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                          )}
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2 line-clamp-2">
-                          {discussion.title}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-3 line-clamp-2">{discussion.excerpt}</p>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-4 text-sm text-gray-500">
-                            <span className="font-medium text-gray-700">{discussion.author.name}</span>
-                            <Badge variant="secondary" className="text-xs">{discussion.author.badge}</Badge>
-                            <div className="flex items-center space-x-1">
-                              <Clock className="w-3 h-3" />
-                              <span>{discussion.createdAt}</span>
-                            </div>
-                          </div>
-                          <div className="flex items-center space-x-4 text-sm text-gray-500">
-                            <div className="flex items-center space-x-1">
-                              <MessageSquare className="w-4 h-4" />
-                              <span>{discussion.replies}</span>
-                            </div>
-                            <div className="flex items-center space-x-1">
-                              <Eye className="w-4 h-4" />
-                              <span>{discussion.views}</span>
-                            </div>
-                            <div className="flex items-center space-x-1">
-                              <ThumbsUp className="w-4 h-4" />
-                              <span>{discussion.likes}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right Sidebar */}
-        <div className="w-80 bg-white h-screen overflow-y-auto fixed right-0 top-32">
-          {/* Top Discussions */}
-          <div className="p-4 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gray-400 rounded"></div>
-              <span>Top Discussions</span>
-            </h3>
-            <div className="space-y-4">
-              {topDiscussions.map((discussion, index) => (
-                <div key={index} className="flex items-start space-x-2">
-                  <Star className="w-4 h-4 text-yellow-500 mt-1 flex-shrink-0" />
-                  <p className="text-sm text-gray-700 hover:text-blue-600 cursor-pointer transition-colors">
-                    {discussion}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Picnic Recipes Card */}
-         
-              
-              {/* Recipe Image */}
-             
-
-              {/* Navigation */}
-              
-            
-        </div>
+          );
+        })}
       </div>
     </div>
+
+    <div className="p-4 border-b border-gray-200">
+      <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
+      <div className="grid grid-cols-3 gap-3">
+        {socialLinks.map((social, index) => {
+          const IconComponent = social.icon;
+          return (
+            <div key={index} className={`${social.color} p-3 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}>
+              <IconComponent className="w-5 h-5 text-white" />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <div className="p-4">
+      <div className="flex flex-wrap gap-4 text-xs">
+        {footerLinks.map((link, index) => (
+          <Link key={index} href="#" className="text-blue-600 hover:text-blue-800 transition-colors">
+            {link}
+          </Link>
+        ))}
+      </div>
+    </div>
+  </div>
+
+
+{/* 2nd div------------------------------- */}
+
+  {/* Main Content - 50% */}
+  <div className="flex-1 ml-[20%] mr-[20%] bg-gray-50 min-h-screen">
+
+    {/* Top Search Bar */}
+    <div className="top-10 left-[25%] right-[25%] z-40 bg-white shadow-sm border-b border-gray-200 fixed">
+      <div className="flex flex-wrap items-center justify-between px-6 py-2 border-b border-gray-100 gap-4">
+        <div className="relative flex-1 min-w-[200px]">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Input
+            placeholder="Search a question, user, blog or post"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          />
+        </div>
+        <div className="flex items-center space-x-4">
+          <BellOff className="text-red-600 cursor-pointer hover:text-red-700 transition-colors" />
+          <HelpCircle className="text-gray-600 cursor-pointer hover:text-gray-700 transition-colors" />
+          <Button className="bg-teal-800 text-white hover:bg-[#20565c] px-4 py-2 text-sm rounded-md font-medium">
+            Ask Question
+          </Button>
+        </div>
+      </div>
+
+      <div className="flex space-x-6 px-4 py-2 bg-white">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`text-sm font-medium transition-colors ${activeTab === tab ? 'bg-teal-800 text-white px-4 py-2 rounded-tl-full rounded-br-md' : 'text-gray-700 hover:text-black px-2 py-2'}`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {/* Featured Discussions */}
+    <div className="max-w-4xl mx-auto p-6 pt-40">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold text-gray-900">Featured Discussions</h2>
+        <Button variant="outline" size="sm">View All</Button>
+      </div>
+
+      <div className="space-y-4">
+        {featuredDiscussions.map((discussion) => (
+          <Card key={discussion.id} className="group hover:shadow-lg transition-all duration-300 cursor-pointer border-0 bg-white">
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-4">
+                <Avatar className="w-12 h-12 ring-2 ring-gray-100">
+                  <AvatarImage src={discussion.author.avatar} alt={discussion.author.name} />
+                  <AvatarFallback>{discussion.author.name[0]}</AvatarFallback>
+                </Avatar>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center space-x-2 mb-2">
+                    {discussion.isPinned && (
+                      <Badge className="bg-blue-100 text-blue-700 text-xs">
+                        <Star className="w-3 h-3 mr-1" />
+                        Pinned
+                      </Badge>
+                    )}
+                    <Badge variant="outline" className="text-xs">{discussion.category}</Badge>
+                    {discussion.hasNewReplies && (
+                      <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                    )}
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2 line-clamp-2">
+                    {discussion.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">{discussion.excerpt}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                      <span className="font-medium text-gray-700">{discussion.author.name}</span>
+                      <Badge variant="secondary" className="text-xs">{discussion.author.badge}</Badge>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-3 h-3" />
+                        <span>{discussion.createdAt}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                      <div className="flex items-center space-x-1">
+                        <MessageSquare className="w-4 h-4" />
+                        <span>{discussion.replies}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Eye className="w-4 h-4" />
+                        <span>{discussion.views}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <ThumbsUp className="w-4 h-4" />
+                        <span>{discussion.likes}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </div>
+
+{/* 3rd div -------------------------------------------------------- */}
+
+  {/* Right Sidebar - 20% */}
+  <div className="w-[20%] bg-white border-l border-gray-200 h-screen overflow-y-auto fixed right-1 top-0">
+    <div className="p-4 border-b border-gray-200 mt-32">
+      <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+        <div className="w-4 h-4 bg-gray-400 rounded"></div>
+        <span>Top Discussions</span>
+      </h3>
+      <div className="space-y-4">
+        {topDiscussions.map((discussion, index) => (
+          <div key={index} className="flex items-start space-x-2">
+            <Star className="w-4 h-4 text-yellow-500 mt-1 flex-shrink-0" />
+            <p className="text-sm text-gray-700 hover:text-blue-600 cursor-pointer transition-colors">
+              {discussion}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
   );
 }
