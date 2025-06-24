@@ -201,6 +201,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('Latest Questions');
   const [isDisclaimerOpen, setDisclaimerOpen] = useState(false);
+  const [isAboutOpen, setAboutOpen] = useState(false);
 
   const tabs = ['Latest Questions', 'Unanswered Questions', 'Blogs', 'Featured Questions', 'Reels'];
 
@@ -247,33 +248,42 @@ export default function Home() {
               })}
             </div>
           </div>
+         
 
           {/* Footer */}
-          <div className="p-4">
-            <div className="flex flex-wrap gap-4 text-xs">
-              {footerLinks.map((link, index) =>
-                link.name === 'Disclaimer' ? (
-                  <button
-                    key={index}
-                    onClick={() => setDisclaimerOpen(true)}
-                    className="text-blue-600 hover:text-blue-800 transition-colors underline"
-                  >
-                    {link.name}
-                  </button>
-                ) : (
-                  <Link key={index} href={link.path} className="text-blue-600 hover:text-blue-800 transition-colors">
-                    {link.name}
-                  </Link>
-                )
-              )}
-            </div>
-          </div>
-        </div>
+         {footerLinks.map((link, index) =>
+  link.name === 'Disclaimer' ? (
+    <button
+      key={index}
+      onClick={() => setDisclaimerOpen(true)}
+      className="text-blue-600 hover:text-blue-800 transition-colors underline"
+    >
+      {link.name}
+    </button>
+  ) : link.name === 'About' ? (
+    <button
+      key={index}
+      onClick={() => setAboutOpen(true)}
+      className="text-blue-600 hover:text-blue-800 transition-colors underline"
+    >
+      {link.name}
+    </button>
+  ) : (
+    <Link
+      key={index}
+      href={link.path}
+      className="text-blue-600 hover:text-blue-800 transition-colors"
+    >
+      {link.name}
+    </Link>
+  )
+)}
+ </div>
 
 {/* 2nd div------------------------------- */}
 
   {/* Main Content - 50% */}
-  <div className="flex-1 ml-[20%] mr-[20%] bg-gray-50 min-h-screen fixed">
+  <div className="flex-1 ml-[20%] mr-[20%] bg-gray-50 min-h-screen ">
 
     {/* Top Search Bar */}
     <div className="top-15 left-[25%] right-[25%] z-40 bg-white shadow-sm border-b border-gray-200 ">
@@ -393,43 +403,43 @@ export default function Home() {
       </div>
 
       {/* Disclaimer Modal */}
-      {isDisclaimerOpen && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div className="bg-white max-w-lg w-full rounded shadow-lg p-6 relative">
-            <button
-              onClick={() => setDisclaimerOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <h2 className="text-xl font-bold mb-2">Disclaimer</h2>
-            <p className="text-sm mb-4 text-gray-600"><strong>Last updated: 01.01.2018</strong></p>
-            <div className="text-gray-700 text-sm space-y-2 max-h-[300px] overflow-y-auto">
-              <p>
-                The information on www.letsdiskuss.com is for general information only. We assume no
-                responsibility for errors or omissions.
-              </p>
-              <p>
-                We are not liable for any damages (direct or indirect) related to the use of our website or services.
-              </p>
-              <p>
-                We reserve the right to make changes to the site and its content at any time without notice.
-              </p>
-              <p>
-                We do not guarantee the website is free from viruses or other harmful elements.
-              </p>
-            </div>
-            <div className="text-right mt-4">
-              <button
-                onClick={() => setDisclaimerOpen(false)}
-                className="text-blue-600 hover:text-blue-800 font-semibold"
-              >
-                CLOSE
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+    {isAboutOpen && (
+  <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
+    <div className="bg-white max-w-lg w-full rounded shadow-lg p-6 relative">
+      <button
+        onClick={() => setAboutOpen(false)}
+        className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+      >
+        <X className="w-5 h-5" />
+      </button>
+      <h2 className="text-xl font-bold mb-2">About Us</h2>
+      <p className="text-sm mb-4 text-gray-600"><strong>Last updated: 01.01.2024</strong></p>
+      <div className="text-gray-700 text-sm space-y-2 max-h-[300px] overflow-y-auto">
+        <p>
+          Welcome to LetsDiskuss – your go-to platform for meaningful discussions, knowledge sharing, and community building.
+        </p>
+        <p>
+          Our mission is to foster an inclusive environment where users can ask questions, share insights, and explore ideas across a wide range of categories.
+        </p>
+        <p>
+          Whether you're a student, professional, hobbyist, or just curious, there's something here for you. We value respectful communication, factual accuracy, and open dialogue.
+        </p>
+        <p>
+          Thank you for being part of our journey. Let's discuss, learn, and grow together!
+        </p>
+      </div>
+      <div className="text-right mt-4">
+        <button
+          onClick={() => setAboutOpen(false)}
+          className="text-blue-600 hover:text-blue-800 font-semibold"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+</>
   );
 }
