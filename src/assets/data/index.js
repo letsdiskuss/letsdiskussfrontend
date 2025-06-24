@@ -47,15 +47,15 @@ export const posts = [
 ];
 
 export const categories = [
-  { name: "Science & Technology", icon: Wrench },
-  { name: "Current Topics", icon: MessageCircle },
-  { name: "Entertainment / Lifestyle", icon: Gamepad2 },
-  { name: "Health & Beauty", icon: Heart },
-  { name: "Food / Cooking", icon: ChefHat },
-  { name: "Astrology", icon: Star },
-  { name: "Sports", icon: Trophy },
-  { name: "Education", icon: GraduationCap },
-  { name: "Others", icon: Plus },
+  { name: "Science & Technology", icon: "/icons/wrench.png" },
+  { name: "Current Topics", icon: "/icons/refresh.png" },
+  { name: "Entertainment / Lifestyle", icon: "/icons/tv.png" },
+  { name: "Health & Beauty", icon: "/icons/heart.png" },
+  { name: "Food / Cooking", icon: "/icons/fast-food.png" },
+  { name: "Astrology", icon: "/icons/esoteric.png" },
+  { name: "Sports", icon: "/icons/running.png" },
+  { name: "Education", icon: "/icons/open-book.png" },
+  { name: "Others", icon: "/icons/plus.png" },
 ];
 
 export const socialLinks = [
@@ -64,6 +64,7 @@ export const socialLinks = [
   { name: "Instagram", icon: Instagram, color: "bg-pink-500" },
   { name: "YouTube", icon: Youtube, color: "bg-red-500" },
   { name: "LinkedIn", icon: Linkedin, color: "bg-blue-700" },
+  { name: "Google News", icon: "/icons/googlenews.png", color: "bg-blue-700" }, // ✅ PNG here
 ];
 
 export const footerLinks = [

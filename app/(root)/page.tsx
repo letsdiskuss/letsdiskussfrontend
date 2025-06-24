@@ -54,51 +54,59 @@ export default function Home() {
       >
         {/* Left Sidebar */}
         <div className="w-[16%] bg-white  overflow-y-auto">
-          <div className="p-4  ">
-            <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
-              <MessageCircle className="w-4 h-4" />
-              <span>Become A Blogger</span>
+          <div className="p-4 ">
+            <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md  hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
+              <span>BECOME A BLOGGER</span>
             </Button>
           </div>
+          <div className="p-4 border border-gray-200 shadow-md rounded m-6">
+            <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+              <img
+                src="/icons/threelines.png"
+                alt=" Three Lines"
+                className="w-4 h-4"
+              />
 
-          <div className="p-3 m-8  bg-white  rounded-md ">
-            <h3 className=" text-black mb-4 flex items-center space-x-2">
-              <div className="w-3 h-3 bg-gray-400 rounded"></div>
               <span>Category</span>
             </h3>
-            <hr className="my-4 border-1 border-gray-300"></hr>
-            <div>
-              {categories.map((category, index) => {
-                const IconComponent = category.icon;
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-3 py-2 px-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors"
-                  >
-                    <IconComponent className="w-4 h-4 text-gray-600" />
-                    <span className="text-sm text-gray-700">
-                      {category.name}
-                    </span>
-                  </div>
-                );
-              })}
+            <hr className="my-6 border-gray-400" />
+
+            <div className="space-y-2">
+              {categories.map((category, index) => (
+                <div
+                  key={index}
+                  className="flex items-center space-x-3 py-2 px-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors"
+                >
+                  <img
+                    src={category.icon}
+                    alt={category.name}
+                    className="w-6 h-6 object-contain"
+                  />
+                  <span className="text-sm text-gray-700">{category.name}</span>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="p-4 border-b border-gray-200">
             <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
             <div className="grid grid-cols-3 gap-3">
-              {socialLinks.map((social, index) => {
-                const IconComponent = social.icon;
-                return (
-                  <div
-                    key={index}
-                    className={`${social.color} p-3 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}
-                  >
-                    <IconComponent className="w-5 h-5 text-white" />
-                  </div>
-                );
-              })}
+              {socialLinks.map((social, index) => (
+                <div
+                  key={index}
+                  className={`${social.color} p-3 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}
+                >
+                  {typeof social.icon === "string" ? (
+                    <img
+                      src={social.icon}
+                      alt={social.name}
+                      className="w-5 h-5 object-contain"
+                    />
+                  ) : (
+                    <social.icon className="w-5 h-5 text-white" />
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 

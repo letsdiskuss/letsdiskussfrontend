@@ -51,7 +51,7 @@ const Header = () => {
               href="/gallery"
               className="text-white hover:text-blue-300 transition-colors flex items-center space-x-2"
             >
-              {/* <Image className="w-4 h-4" /> */}
+               <img src="/icons/gallery.png" className="w-5 h-5 " alt="Add" />
               <span>Gallery</span>
             </Link>
             <Link
