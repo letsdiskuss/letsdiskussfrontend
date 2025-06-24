@@ -26,8 +26,8 @@ import {
   ThumbsUp,
   X,
 } from "lucide-react";
-import { DiscussionCard } from "@/src/components/pages/home/DiscussionCard";
-import { Discussion } from "@/src/types";
+import { Discussion } from "@/types";
+import { DiscussionCard } from "@/components/pages/home/DiscussionCard";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");

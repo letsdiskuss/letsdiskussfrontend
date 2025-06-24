@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Eye, MessageSquare, Star, ThumbsUp } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Discussion } from "@/src/types";
+import { Discussion } from "@/types";
 
 interface DiscussionCardProps {
   discussion: Discussion;
