@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -22,7 +22,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Textarea } from "@/components/ui/textarea";
-import { Separator } from "@/components/ui/separator";
 
 // Mock data for a discussion thread
 const discussion = {
@@ -147,25 +146,11 @@ The results are promising, but human oversight is still crucial. AI can catch co
   },
 ];
 
-export default function DiscussionPage({ params }: { params: { id: string } }) {
-  const [newReply, setNewReply] = useState("");
-  const [isBookmarked, setIsBookmarked] = useState(discussion.isBookmarked);
-  const [likes, setLikes] = useState(discussion.likes);
-  const [hasLiked, setHasLiked] = useState(false);
-
-  const handleLike = () => {
-    if (hasLiked) {
-      setLikes(likes - 1);
-      setHasLiked(false);
-    } else {
-      setLikes(likes + 1);
-      setHasLiked(true);
-    }
-  };
-
-  const handleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
-  };
+export default function DiscussionPage() {
+  const [newReply] = useState("");
+  const [isBookmarked] = useState(discussion.isBookmarked);
+  const [likes] = useState(discussion.likes);
+  const [hasLiked] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
@@ -266,7 +251,7 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
                 </h1>
               </div>
               <div className="flex items-center space-x-2 ml-4">
-                <Button variant="ghost" size="sm" onClick={handleBookmark}>
+                <Button variant="ghost" size="sm">
                   <Bookmark
                     className={`h-4 w-4 ${isBookmarked ? "fill-current text-blue-600" : ""}`}
                   />
@@ -337,7 +322,6 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={handleLike}
                   className={`${hasLiked ? "text-blue-600 bg-blue-50" : "text-gray-600"}`}
                 >
                   <ThumbsUp className="w-4 h-4 mr-1" />
@@ -384,7 +368,6 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
                   <Textarea
                     placeholder="Share your thoughts..."
                     value={newReply}
-                    onChange={(e) => setNewReply(e.target.value)}
                     className="min-h-24 resize-none border-gray-200 focus:border-blue-300"
                   />
                   <div className="flex justify-between items-center mt-3">

@@ -1,8 +1,7 @@
 "use client";
+import React from "react";
 
 import Image from "next/image";
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 
 interface GalleryItem {
   id: number;

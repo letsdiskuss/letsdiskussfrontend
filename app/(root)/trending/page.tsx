@@ -1,18 +1,15 @@
 "use client";
-
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   Search,
   TrendingUp,
-  Users,
   MessageSquare,
   ArrowLeft,
   Siren as Fire,
   Clock,
   Eye,
   ThumbsUp,
-  Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,15 +23,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FaBell } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
-import { IoMdHome } from "react-icons/io";
-import { IoImages } from "react-icons/io5";
-import { FaCommentAlt, FaPhoneAlt, FaPen } from "react-icons/fa";
-import { Bell } from "lucide-react";
-import { Image } from "lucide-react";
-import { Phone } from "lucide-react";
-import { Edit } from "lucide-react";
 
 const trendingDiscussions = [
   {
@@ -136,7 +124,7 @@ const trendingDiscussions = [
 ];
 
 export default function Trending() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery] = useState("");
   const [timeFilter, setTimeFilter] = useState("today");
 
   const filteredDiscussions = trendingDiscussions
@@ -197,7 +185,6 @@ export default function Trending() {
                 <Input
                   placeholder="Search trending discussions..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10 bg-gray-50 border-0 focus:bg-white transition-colors"
                 />
               </div>

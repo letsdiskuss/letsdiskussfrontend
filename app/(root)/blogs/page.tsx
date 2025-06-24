@@ -2,8 +2,7 @@
 // Here's the complete Next.js + Tailwind CSS + TypeScript page with the provided structure integrated.
 
 "use client";
-
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -225,6 +224,7 @@ export default function Home() {
               <Input
                 placeholder="Search a question, user, blog or post"
                 value={searchQuery}
+                // eslint-disable-next-line react/jsx-no-bind
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-400"
               />

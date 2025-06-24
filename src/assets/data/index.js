@@ -1,8 +1,5 @@
 import {
   MessageCircle,
-  Search,
-  BellOff,
-  HelpCircle,
   Wrench,
   Gamepad2,
   Heart,
@@ -16,11 +13,6 @@ import {
   Instagram,
   Youtube,
   Linkedin,
-  Clock,
-  MessageSquare,
-  Eye,
-  ThumbsUp,
-  X,
 } from "lucide-react";
 
 export const posts = [

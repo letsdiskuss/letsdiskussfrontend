@@ -198,7 +198,7 @@ export default function PrivacyPolicyPage() {
           engineering or other support. Reviews on your site submitted by
           clients will be visible to all that we can remove (but cannot change)
           as per your approval. Or all views expressed here are of users and we
-          don’t take any responsibility of anyone’s comment's. Let’s Diskuss may
+          don’t take any responsibility of anyone’s comments. Let’s Diskuss may
           use your information with third parties to offer combined services. if
           we do this, use of information by third parties will be bound by the
           mentioned Privacy Policy.

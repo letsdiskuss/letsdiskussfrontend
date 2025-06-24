@@ -1,17 +1,15 @@
 "use client";
+import React, { useState } from "react";
 
-import { useState } from "react";
 import Link from "next/link";
 import {
   Search,
   Users,
-  MessageSquare,
   ArrowLeft,
   Trophy,
   Medal,
   Award,
   Crown,
-  Star,
   TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,15 +24,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FaBell } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
-import { IoMdHome } from "react-icons/io";
-import { IoImages } from "react-icons/io5";
-import { FaCommentAlt, FaPhoneAlt, FaPen } from "react-icons/fa";
-import { Bell } from "lucide-react";
-import { Image } from "lucide-react";
-import { Phone } from "lucide-react";
-import { Edit } from "lucide-react";
 
 const leaderboardData = [
   {
@@ -124,7 +113,7 @@ const leaderboardData = [
 ];
 
 export default function Leaderboard() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery] = useState("");
   const [timeFilter, setTimeFilter] = useState("all-time");
   const [categoryFilter, setCategoryFilter] = useState("all");
 
@@ -212,7 +201,6 @@ export default function Leaderboard() {
                 <Input
                   placeholder="Search contributors..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10 bg-gray-50 border-0 focus:bg-white transition-colors"
                 />
               </div>
@@ -246,7 +234,7 @@ export default function Leaderboard() {
 
         {/* Top 3 Podium */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {filteredUsers.slice(0, 3).map((user, index) => (
+          {filteredUsers.slice(0, 3).map((user) => (
             <Card
               key={user.id}
               className={`relative overflow-hidden border-0 ${getRankBadgeColor(user.rank)} p-1`}

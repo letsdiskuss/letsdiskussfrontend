@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { Colors } from "./src/assets/colors.tsx";
 
 const config: Config = {
   darkMode: ["class"],
@@ -6,6 +7,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "src/assets/colors.tsx",
   ],
   theme: {
     extend: {
@@ -18,6 +20,9 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        poppins: ["var(--font-poppins)"],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -60,6 +65,7 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        ...Colors,
       },
       keyframes: {
         "accordion-down": {
@@ -85,6 +91,5 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
 };
 export default config;

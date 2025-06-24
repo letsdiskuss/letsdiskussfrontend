@@ -1,6 +1,6 @@
 "use client";
+import React, { useState } from "react";
 
-import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 type FAQItem = {
@@ -78,15 +78,7 @@ Once you have created a blog, you will need to post your content in it.
 ];
 
 export default function FAQPage() {
-  const [openIndexes, setOpenIndexes] = useState<number[]>([]);
-
-  const toggleFAQ = (index: number) => {
-    if (openIndexes.includes(index)) {
-      setOpenIndexes(openIndexes.filter((i) => i !== index));
-    } else {
-      setOpenIndexes([...openIndexes, index]);
-    }
-  };
+  const [openIndexes] = useState<number[]>([]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 px-4">
@@ -97,21 +89,21 @@ export default function FAQPage() {
       {/* Description */}
       <div className="bg-white shadow p-6 rounded mb-6 max-w-4xl text-gray-700">
         <p>
-          <strong>Let’s Diskuss</strong> is an online discussion forum which
+          <strong>Let Diskuss</strong> is an online discussion forum which
           allows you to access information and latest news about the world and
           actively participate in the ongoing discussions. This online portal
           serves the interest of its users belonging to various different fields
           and categories. Users here can ask anything they want an answer or
-          advice on, and get experts’ point of view immediately on their
-          queries. Let’s Diskuss hosts a panel of different experts and
-          intellectuals who hold an eminent position in their respective fields.
-          With the help of this panel, Let’s Diskuss ensures that no query of
-          its valuable users goes unanswered or unheard. Whether you have a
-          problem related to your studies, your personal life, or you are
-          disturbed thinking about a particular political issue, you can post it
-          on Let’s Diskuss without being judged. Let’s Diskuss also offers a
-          picture gallery for entertainment and a blog section for people who
-          believe in detailed expression.
+          advice on, and get experts point of view immediately on their queries.
+          Let Diskuss hosts a panel of different experts and intellectuals who
+          hold an eminent position in their respective fields. With the help of
+          this panel, Let’s Diskuss ensures that no query of its valuable users
+          goes unanswered or unheard. Whether you have a problem related to your
+          studies, your personal life, or you are disturbed thinking about a
+          particular political issue, you can post it on Let’s Diskuss without
+          being judged. Let’s Diskuss also offers a picture gallery for
+          entertainment and a blog section for people who believe in detailed
+          expression.
         </p>
       </div>
 
@@ -119,10 +111,7 @@ export default function FAQPage() {
       <div className="w-full max-w-4xl space-y-4">
         {faqData.map((faq, index) => (
           <div key={index} className="bg-white shadow p-4 rounded">
-            <button
-              onClick={() => toggleFAQ(index)}
-              className="flex justify-between items-center w-full text-left font-semibold text-gray-800"
-            >
+            <button className="flex justify-between items-center w-full text-left font-semibold text-gray-800">
               <span>Question: {faq.question}</span>
               {openIndexes.includes(index) ? (
                 <ChevronUp className="w-5 h-5 text-gray-600" />

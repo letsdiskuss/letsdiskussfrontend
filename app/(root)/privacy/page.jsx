@@ -8,9 +8,9 @@ export default function PrivacyPolicyPage() {
       <div className="max-w-5xl mx-auto bg-white p-8 rounded shadow">
         <h1 className="text-3xl text-black font-bold mb-4">Privacy Policy</h1>
         <p className="text-gray-700 mb-4">
-          At Let’s Diskuss, we are well aware of the importance of your privacy
+          At Lets Diskuss, we are well aware of the importance of your privacy
           and we are taking it seriously. Here, we have the privacy policy
-          points to describe, Let’s Diskuss’s policies and procedures on the
+          points to describe, Diskusss policies and procedures on the
           collection, use, disclosure and sharing of your information at the
           time of using our services through website, content embedded on
           another site, your Smartphone, through one of applications for mobile
@@ -42,40 +42,40 @@ export default function PrivacyPolicyPage() {
           Information on Uses Basis
         </h2>
         <p className="text-gray-700 mb-4">
-          Let’s Diskuss can use your email address to send you service-related
+          Lets Diskuss can use your email address to send you service-related
           notices that include any notices required by law, in lieu of
           communication by postal mail. In addition you can control receipt of
           certain service-related messages on your settings page. Your contact
           information may be used to send you marketing email messages. In case,
-          you don’t want to receive such messages, you may opt out by following
+          you dont want to receive such messages, you may opt out by following
           the instructions in the message. We may keep hold of the content of
           your email messages, your email address and our responses, in case you
           correspond with us by email. Using social networking sites like
           Facebook, Twitter or anyone else account information to sign in to
-          Let’s Diskuss, this information will be collected and stored in Social
+          Lets Diskuss, this information will be collected and stored in Social
           Networking Site User ID or SNS User ID. In case, you contact with your
-          account at this site with your this site’s account, our systematic way
+          account at this site with your this sites account, our systematic way
           may ask for your permission to collect certain information from your
-          Account at Let’s Diskuss. We get information from you in user content
+          Account at Lets Diskuss. We get information from you in user content
           that you post to the services. This information may be searched by
           search engine and be republished elsewhere on the web according to
           Terms of Services. If you choose to use invitation service to invite a
           friend to the service, some questions may be put to you that include
-          person’s email address and automatically send an email invitation. You
-          may also use contact importer tool to help you upload other user’s
-          email address so you can find friend who are already on Let’s Diskuss
+          persons email address and automatically send an email invitation. You
+          may also use contact importer tool to help you upload other users
+          email address so you can find friend who are already on Lets Diskuss
           or invite to the services. This site stores this information to send
           invitations, to register your friend if you invitation is accepted, to
           track the success of our invitation services and to indentify your
-          friends on this website. By endowing with your friends’ email
-          addresses to Let’s Diskuss, you warrant that you have their consent to
-          do so and for Let’s Diskuss to use this information as described
-          above. Automatic Information Collection Using Persistent and session
-          cookies and other tracking technologies like log files, clear GIF’s
-          and Flash Technologies to store your username and password as well as
-          to analyze the usage of other Services and customize the services to
-          your preferences and control the advertising displayed by the service
-          are in privacy policy with rights. We also may include clear GIFs in
+          friends on this website. By endowing with your friends email addresses
+          to Lets Diskuss, you warrant that you have their consent to do so and
+          for Lets Diskuss to use this information as described above. Automatic
+          Information Collection Using Persistent and session cookies and other
+          tracking technologies like log files, clear GIFs and Flash
+          Technologies to store your username and password as well as to analyze
+          the usage of other Services and customize the services to your
+          preferences and control the advertising displayed by the service are
+          in privacy policy with rights. We also may include clear GIFs in
           HTML-based emails sent to our users to determine whether the message
           has been opened. As we adopt additional technology, we may also gather
           additional information through other methods. We mention in privacy
@@ -91,14 +91,14 @@ export default function PrivacyPolicyPage() {
           pages viewed and the order of those pages The amount of time spent on
           particular pages, the date and time you used the Service, and other
           similar information. In addition, we have rights to capture other
-          data, such as search criteria and results. Let’s Diskussdiscloses a
+          data, such as search criteria and results. Lets Diskussdiscloses a
           compartment of this automatically collected information publicly.
           Exclusively, you consent to our disclosure of information related to
           the ways in which you interact with the service like landing pages,
           pages viewed and the order of those pages, the date and time you used
           the Service, and other similar information on the service to other
           users. Not to mention your name and profile picture. However, in case,
-          you don’t want to have this information disclosed to the public, you
+          you dont want to have this information disclosed to the public, you
           may opt out of this feature by visiting settings.
         </p>
 
@@ -114,7 +114,7 @@ export default function PrivacyPolicyPage() {
           disable the GPS or other location-tracking functions on your device,
           in case you access the service through a mobile device and you do not
           want your device to provide us with location-tracking information.
-          Cookies Being a small text file stored by a website in user’s web
+          Cookies Being a small text file stored by a website in users web
           browser, Cookies is all about helping us in different ways to make
           your visit to website more informative and enjoyable as well as
           meaningful too. Amid different things, Cookies avoid you having to log
@@ -122,7 +122,7 @@ export default function PrivacyPolicyPage() {
           tailoring a website or advertisement to better match your interest and
           preferences. Not to mention a session cookie that is stored only in
           your system and last for your browsing session. At the time of closing
-          all browsers’ windows or at the time of shutting down your computer,
+          all browsers windows or at the time of shutting down your computer,
           the session cookie disappears forever. You will also see persistent
           cookie remains in your system after you close browser. It remains to
           get used by your browser on subsequent visits to the services. Cookies
@@ -139,7 +139,7 @@ export default function PrivacyPolicyPage() {
           Analytics And Research Cookies
         </h2>
         <p className="text-gray-700 mb-4">
-          – at Let’s Diskuss, we use these cookies to better understand how
+          – at Lets Diskuss, we use these cookies to better understand how
           people use our site.
         </p>
 
@@ -147,7 +147,7 @@ export default function PrivacyPolicyPage() {
           Authentication and Security Cookies
         </h2>
         <p className="text-gray-700 mb-4">
-          – These cookies are used to enable you to remain logged into Let’s
+          – These cookies are used to enable you to remain logged into Lets
           Diskussand verify that it is you as you use this site. It is for
           helping to keep your account safe and secure from unauthorized use. It
           is also for help in combat spam and other abuse which violates our
@@ -158,7 +158,7 @@ export default function PrivacyPolicyPage() {
         </h2>
         <p className="text-gray-700 mb-4">
           – We use these cookies to enable the functionality of some features
-          within the Let’s Diskussproduct, in exacting to personalize the
+          within the Lets Diskussproduct, in exacting to personalize the
           experience towards you. We also use these cookies to store certain of
           your preferences and settings.
         </p>
@@ -175,19 +175,19 @@ export default function PrivacyPolicyPage() {
           statistics as well as provide content sharing services to support the
           service. In such a situation, they may also use cookies and similar
           technologies to collect similar information about your use of our
-          service. Let’s Diskuss doesn’t control the third parties’ use of such
-          technologies and their use is governed by those parties’ privacy
+          service. Lets Diskuss doesnt control the third parties use of such
+          technologies and their use is governed by those parties privacy
           policies. We may allow third party ad servers/network to server
           advertisement on the services. These third- party ad servers or ad
           networks use technology to send, directly to your browser, the
           advertisements and links that appear on our site. They automatically
-          receive your IP address when this happens. We don’t endow any
+          receive your IP address when this happens. We dont endow any
           information that can identify you personally to these third-party ad
           servers or ad networks without your consent. However, please note that
           if an advertiser asks us to show an advertisement to a certain
           audience and you respond to that advertisement, the advertiser or ad
           server may conclude that you fit the description of the audience they
-          are trying to reach. Let’s Diskuss doesn’t respond to “Do Not Track”
+          are trying to reach. Lets Diskuss doesnt respond to “Do Not Track”
           signals, and we do not control whether third parties do. For more
           information about third-party ad networks that use cookies and the
           other technologies discussed above, and to opt-out of their tailoring
@@ -198,9 +198,9 @@ export default function PrivacyPolicyPage() {
           engineering or other support. Reviews on your site submitted by
           clients will be visible to all that we can remove (but cannot change)
           as per your approval. Or all views expressed here are of users and we
-          don’t take any responsibility of anyone’s comment's. Let’s Diskuss may
-          use your information with third parties to offer combined services. if
-          we do this, use of information by third parties will be bound by the
+          dont take any responsibility of anyone commens. Lets Diskuss may use
+          your information with third parties to offer combined services. if we
+          do this, use of information by third parties will be bound by the
           mentioned Privacy Policy.
         </p>
         <h2 className="text-xl font-semibold text-black mt-6 mb-2">
@@ -213,7 +213,7 @@ export default function PrivacyPolicyPage() {
           business assets in these types of transactions. We may also transfer
           or assign such information in the course of corporate divestitures,
           mergers, or dissolution. We have rights to share/disclose your
-          information with your consent. We cannot control third parties’ use of
+          information with your consent. We cannot control third parties use of
           your information.
         </p>
 
@@ -227,12 +227,12 @@ export default function PrivacyPolicyPage() {
           may disclose information to enforce or administer our agreements with
           users like Terms of Services, for fraud prevention, risk assessment,
           investigation, customer support, product development and for other
-          purposes like to protect rights, property or safety of Let’s Diskuss
-          as well as its users, members of the public and similar others. By
+          purposes like to protect rights, property or safety of Lets Diskuss as
+          well as its users, members of the public and similar others. By
           utilizing services, you consent to the transfer of information to
           anywhere globally for storage, processing and use by us according to
           the privacy policy. We may aggregate and/or anonymize information
-          collected through the service so that the information doesn’t identify
+          collected through the service so that the information doesnt identify
           you. We may use it for any purpose like for research and marketing
           purposes. Use and disclosure of such information is not subject to any
           restrictions under this Privacy Policy.
@@ -244,7 +244,7 @@ export default function PrivacyPolicyPage() {
           We use different physical, managerial, and technical points and
           techniques to preserve the integrity and security of your information
           that is based on the sensitivity of the information. We cannot ensure
-          or warrant the security of any information you transmit to Let’s
+          or warrant the security of any information you transmit to Lets
           Diskussor assure that your information on the service may not be
           accessed, disclosed, altered or destroyed by breach of any of our
           physical, technical or managerial safeguards. You may also decline to
@@ -259,24 +259,24 @@ export default function PrivacyPolicyPage() {
         </h2>
         <p className="text-gray-700 mb-4">
           We know the importance of protecting the privacy of young children. We
-          don’t intentionally collect or ask for personal information from
-          anyone under the age of 13 or knowingly allow such persons to register
-          with the service. We immediately take steps to remove information, in
-          case we become aware that we have collected personal information from
-          a child under the relevant age without parental consent. Links to
-          Other Web Sites Let’s Diskuss is not responsible for practices
-          employed by website linked to or from the services. We are not
-          responsible for information or content contained therein. In case of
-          using a link to go from the services to another website, in that case,
-          Privacy Policy is no longer in effect. Your browsing and interaction
-          on any other website, even those with links on Let’s Diskuss, is
-          subject to that website’s own rules and policies.
+          dont intentionally collect or ask for personal information from anyone
+          under the age of 13 or knowingly allow such persons to register with
+          the service. We immediately take steps to remove information, in case
+          we become aware that we have collected personal information from a
+          child under the relevant age without parental consent. Links to Other
+          Web Sites Lets Diskuss is not responsible for practices employed by
+          website linked to or from the services. We are not responsible for
+          information or content contained therein. In case of using a link to
+          go from the services to another website, in that case, Privacy Policy
+          is no longer in effect. Your browsing and interaction on any other
+          website, even those with links on Lets Diskuss, is subject to that
+          websites own rules and policies.
         </p>
         <h2 className="text-xl font-semibold text-black mt-6 mb-2">
           Changes to Our Privacy Policy
         </h2>
         <p className="text-gray-700 mb-4">
-          In case, Let’s Diskuss change privacy policies or procedures, we
+          In case, Lets Diskuss change privacy policies or procedures, we
           release news on our site or post those changes on this page to keep
           you aware of what we get and how we use it as well as under what
           circumstances we may disclose it. Changes in the privacy policy are

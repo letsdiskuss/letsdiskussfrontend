@@ -39,13 +39,13 @@ export default function Page() {
           {/* Left Text */}
           <div className="flex flex-col justify-center">
             <h1 className="text-5xl text-black mb-4">
-              Welcome to the Guest Posting Services at Let's Diskuss!
+              Welcome to the Guest Posting Services at Lets Diskuss!
             </h1>
             <p className="text-gray-700 mb-6">
               Do you want to become more visible online, become an authority in
-              your field, and increase website traffic? There's nowhere else to
-              look! Let's Diskuss provides excellent guest post services that
-              are intended to improve your brand and increase your internet
+              your field, and increase website traffic? Theres nowhere else to
+              look! Lets Diskuss provides excellent guest post services that are
+              intended to improve your brand and increase your internet
               presence.
             </p>
             <button className="bg-teal-900 hover:bg-teal-800 text-white px-6 py-2 rounded shadow-md w-fit">
@@ -123,13 +123,13 @@ export default function Page() {
         {/* Heading + Intro Paragraph */}
         <div className="max-w-4xl text-center mb-12">
           <h2 className="text-3xl  text-gray-900 mb-4">
-            Why Opt for Let's Diskuss?
+            Why Opt for Lets Diskuss?
           </h2>
           <p className="text-gray-700">
-            Here at Let's Diskuss, we recognize the value of thoughtful guest
+            Here at Lets Diskuss, we recognize the value of thoughtful guest
             writing in the current online environment. Our guest posting
             services are intended to make you stand out from the competition and
-            accomplish your marketing objectives. Here's why you should choose
+            accomplish your marketing objectives. Heres why you should choose
             us:
           </p>
         </div>
@@ -149,8 +149,8 @@ export default function Page() {
               <span className="font-semibold">Relevant websites:</span> We have
               forged connections with a wide range of respectable websites in
               different markets and specializations. For your guest articles,
-              we'll choose the most authoritative and relevant websites,
-              regardless of the audience or niche you're trying to reach.
+              well choose the most authoritative and relevant websites,
+              regardless of the audience or niche youre trying to reach.
             </p>
             <p>
               <span className="font-semibold">White-Hat Practices:</span> We
@@ -323,7 +323,7 @@ export default function Page() {
           Are you prepared to leverage smart guest posting to further elevate
           your online presence? Get in touch with us right now to find out more
           about our guest posting options and how we can support your marketing
-          objectives. Let's Diskuss is your go-to resource for excellent guest
+          objectives. Lets Diskuss is your go-to resource for excellent guest
           posting that produces outcomes.
         </p>
         <button className="bg-teal-700 hover:bg-teal-600 text-white py-2 px-6 rounded shadow">
