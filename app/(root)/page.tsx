@@ -209,7 +209,7 @@ export default function Home() {
     <>
       <div className={`flex min-h-screen ${isDisclaimerOpen ? 'blur-sm overflow-hidden' : ''}`}>
         {/* Left Sidebar */}
-        <div className="w-[20%] bg-white border-r border-gray-200 h-screen overflow-y-auto fixed left-5 top-0 z-10">
+        <div className="w-[20%] bg-gray-100  h-screen overflow-y-auto fixed left-5 top-0 z-10">
           <div className="p-4 border-b border-gray-200 mt-20">
             <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
               <MessageCircle className="w-4 h-4" />
@@ -217,12 +217,14 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className="p-4 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gray-400 rounded"></div>
-              <span>Category</span>
+          <div className="p-3 m-8  bg-white  rounded-md ">
+            <h3 className=" text-black mb-4 flex items-center space-x-2">
+              <div className="w-3 h-3 bg-gray-400 rounded"></div>
+              <span >Category</span>
+            
             </h3>
-            <div className="space-y-2">
+            <hr className='my-4 border-1 border-gray-300'></hr>
+            <div >
               {categories.map((category, index) => {
                 const IconComponent = category.icon;
                 return (
@@ -382,7 +384,7 @@ export default function Home() {
 {/* 3rd div -------------------------------------------------------- */}
 
   {/* Right Sidebar - 20% */}
-  <div className="w-[20%] bg-white border-l border-gray-200 h-screen overflow-y-auto fixed right-1 top-0">
+  <div className="w-[20%] bg-white  h-screen overflow-y-auto fixed right-1 top-0">
           <div className="p-4 border-b border-gray-200 mt-32">
             <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
               <div className="w-4 h-4 bg-gray-400 rounded"></div>
@@ -403,6 +405,43 @@ export default function Home() {
       </div>
 
       {/* Disclaimer Modal */}
+       {isDisclaimerOpen && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-white max-w-lg w-full rounded shadow-lg p-6 relative">
+            <button
+              onClick={() => setDisclaimerOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <h2 className="text-xl font-bold mb-2">Disclaimer</h2>
+            <p className="text-sm mb-4 text-gray-600"><strong>Last updated: 01.01.2018</strong></p>
+            <div className="text-gray-700 text-sm space-y-2 max-h-[300px] overflow-y-auto">
+              <p>
+                The information on www.letsdiskuss.com is for general information only. We assume no
+                responsibility for errors or omissions.
+              </p>
+              <p>
+                We are not liable for any damages (direct or indirect) related to the use of our website or services.
+              </p>
+              <p>
+                We reserve the right to make changes to the site and its content at any time without notice.
+              </p>
+              <p>
+                We do not guarantee the website is free from viruses or other harmful elements.
+              </p>
+            </div>
+            <div className="text-right mt-4">
+              <button
+                onClick={() => setDisclaimerOpen(false)}
+                className="text-blue-600 hover:text-blue-800 font-semibold"
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     {isAboutOpen && (
   <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
     <div className="bg-white max-w-lg w-full rounded shadow-lg p-6 relative">
