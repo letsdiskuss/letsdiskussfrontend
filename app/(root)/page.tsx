@@ -127,7 +127,7 @@ export default function Home() {
               >
                 {link.name}
               </Link>
-            )
+            ),
           )}
         </div>
 
