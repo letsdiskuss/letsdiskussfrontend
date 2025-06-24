@@ -80,6 +80,14 @@ export const topDiscussions = [
   "Who is naomi burton-crews and What about her family?",
   "What are the latest chapters in Physical, Organic and Inorganic chemistry for class 11 and 12 of CBSE?",
   "Elaine Starchuk: Where is Tommy Lee's first wife now?",
+   "What is the best cursive font in Microsoft Word?",
+  "Who is naomi burton-crews and What about her family?",
+  "What are the latest chapters in Physical, Organic and Inorganic chemistry for class 11 and 12 of CBSE?",
+  "Elaine Starchuk: Where is Tommy Lee's first wife now?",
+   "What is the best cursive font in Microsoft Word?",
+  "Who is naomi burton-crews and What about her family?",
+  "What are the latest chapters in Physical, Organic and Inorganic chemistry for class 11 and 12 of CBSE?",
+  "Elaine Starchuk: Where is Tommy Lee's first wife now?",
 ];
 
 export const featuredDiscussions = [

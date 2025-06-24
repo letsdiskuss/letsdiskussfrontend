@@ -48,13 +48,13 @@ export default function Home() {
   return (
     <>
       <div
-        className={`flex min-h-screen  ${
+        className={`flex min-h-screen bg-gray-100 ${
           isDisclaimerOpen ? "blur-sm overflow-hidden" : ""
         }`}
       >
         {/* Left Sidebar */}
-        <div className="w-[16%] bg-white  overflow-y-auto">
-          <div className="p-4 ">
+        <div className="w-[16%] bg-gray-100  overflow-y-auto">
+          <div className="p-3 ">
             <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md  hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
               <span>BECOME A BLOGGER</span>
             </Button>
@@ -88,8 +88,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="p-4 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
+          <div className="p-3 border border-gray-300 shadow-md">
+            <h3 className="font-bold text-gray-900 mb-4">Find Us</h3>
             <div className="grid grid-cols-3 gap-3">
               {socialLinks.map((social, index) => (
                 <div
@@ -103,7 +103,7 @@ export default function Home() {
                       className="w-5 h-5 object-contain"
                     />
                   ) : (
-                    <social.icon className="w-5 h-5 text-white" />
+                    <social.icon className="w-6 h-6 text-white" />
                   )}
                 </div>
               ))}
@@ -111,33 +111,35 @@ export default function Home() {
           </div>
 
           {/* Footer */}
-          {footerLinks.map((link, index) =>
-            link.name === "Disclaimer" ? (
-              <button
-                key={index}
-                onClick={() => setDisclaimerOpen(true)}
-                className="text-blue-600 hover:text-blue-800 transition-colors underline"
-              >
-                {link.name}
-              </button>
-            ) : link.name === "About" ? (
-              <button
-                key={index}
-                onClick={() => setAboutOpen(true)}
-                className="text-blue-600 hover:text-blue-800 transition-colors underline"
-              >
-                {link.name}
-              </button>
-            ) : (
-              <Link
-                key={index}
-                href={link.path}
-                className="text-blue-600 hover:text-blue-800 transition-colors"
-              >
-                {link.name}
-              </Link>
-            )
-          )}
+          <div className="flex flex-wrap gap-3">
+            {footerLinks.map((link, index) =>
+              link.name === "Disclaimer" ? (
+                <button
+                  key={index}
+                  onClick={() => setDisclaimerOpen(true)}
+                  className="text-blue-600 hover:text-blue-800 transition-colors underline"
+                >
+                  {link.name}
+                </button>
+              ) : link.name === "About" ? (
+                <button
+                  key={index}
+                  onClick={() => setAboutOpen(true)}
+                  className="text-blue-600 hover:text-blue-800 transition-colors underline"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <Link
+                  key={index}
+                  href={link.path}
+                  className="text-blue-600 hover:text-blue-800 transition-colors"
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
+          </div>
         </div>
 
         {/* 2nd div------------------------------- */}
@@ -147,7 +149,7 @@ export default function Home() {
           {/* Top Search Bar */}
           <div className="  shadow-sm border-b border-gray-200 ">
             <div className="flex  flex-wrap items-center justify-between px-6 py-2 border-b border-gray-100 gap-4">
-              <div className="relative flex-1 ">
+              <div className="relative flex-1  ">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
                   placeholder="Search a question, user, blog or post"
@@ -159,7 +161,7 @@ export default function Home() {
               <div className="flex items-center space-x-4">
                 <BellOff className="text-red-600 cursor-pointer hover:text-red-700 transition-colors" />
                 <HelpCircle className="text-gray-600 cursor-pointer hover:text-gray-700 transition-colors" />
-                <Button className="bg-teal-800 text-white hover:bg-[#20565c] px-4 py-2 text-sm rounded-md font-medium">
+                <Button className="bg-teal-800 text-white hover:bg-[#20565c] px-6 py-2 text-sm rounded-md font-medium">
                   Ask Question
                 </Button>
               </div>
@@ -194,10 +196,15 @@ export default function Home() {
         {/* 3rd div -------------------------------------------------------- */}
 
         {/* Right Sidebar - 20% */}
-        <div className="w-[16%] bg-white ">
+        <div className="w-[16%] bg-gray-100 h-5 ">
           <div className="p-4 border-b border-gray-200">
             <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gray-400 rounded"></div>
+              <img
+                src="/icons/threelines.png"
+                alt=" Three Lines"
+                className="w-4 h-4"
+              />
+
               <span>Top Discussions</span>
             </h3>
             <div className="space-y-4">
