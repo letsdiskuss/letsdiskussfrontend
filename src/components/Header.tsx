@@ -19,20 +19,19 @@ const Header = () => {
     setIsMounted(true);
   }, []);
 
-
   return (
     <header className="sticky top-0 left-0 right-0  z-50  shadow-sm mt-10">
       <div className="max-w-full bg-[#20565c] mx-auto px-14 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between h-10">
           {/* LEFT: Navigation */}
           <div className="flex items-center space-x-8 pl-22 ">
-            <Link href="/" className="flex-none w-28">
+            <Link href="/" className="flex  rounded-full bg-white">
               <Image
                 src="/image.png"
-               width={110}
-               height={60}
+                width={100}
+                height={50}
                 alt="Logo"
-                className="w-full bg-white p-4 rounded-full "
+                objectFit="contain"
               />
             </Link>
 
@@ -52,7 +51,7 @@ const Header = () => {
               href="/gallery"
               className="text-white hover:text-blue-300 transition-colors flex items-center space-x-2"
             >
-              {/* <Image className="w-4 h-4" /> */}
+               <img src="/icons/gallery.png" className="w-5 h-5 " alt="Add" />
               <span>Gallery</span>
             </Link>
             <Link

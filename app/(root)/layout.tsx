@@ -1,15 +1,17 @@
 // app/layout.tsx
 
-import Header from '@/src/components/Header';
-import '../globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+import Header from "@/components/Header";
+import "../globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'LetsDiskuss - Where Ideas Come to Life',
-  description: 'Join thousands of professionals sharing knowledge, solving problems, and building the future together in our vibrant community.',
+  title: "LetsDiskuss - Where Ideas Come to Life",
+  description:
+    "Join thousands of professionals sharing knowledge, solving problems, and building the future together in our vibrant community.",
 };
 
 export default function RootLayout({
@@ -20,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
+        <Header/>
         {children}
       </body>
     </html>
