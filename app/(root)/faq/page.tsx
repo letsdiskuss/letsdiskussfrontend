@@ -107,7 +107,6 @@ export default function FAQPage() {
         </p>
       </div>
 
-      {/* FAQ Accordion */}
       <div className="w-full max-w-4xl space-y-4">
         {faqData.map((faq, index) => (
           <div key={index} className="bg-white shadow p-4 rounded">
