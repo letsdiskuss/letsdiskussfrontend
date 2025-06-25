@@ -56,7 +56,12 @@ export const socialLinks = [
   { name: "Instagram", icon: Instagram, color: "bg-pink-500" },
   { name: "YouTube", icon: Youtube, color: "bg-red-500" },
   { name: "LinkedIn", icon: Linkedin, color: "bg-blue-700" },
-  { name: "Google News", icon: "/icons/googlenews.png", color: "bg-blue-700" }, // ✅ PNG here
+  {
+    name: "Google News",
+    icon: "/icons/googlenews.png",
+    color:
+      "bg-gradient-to-r from-green-500 via-yellow-400 via-red-500 to-blue-500",
+  },
 ];
 
 export const footerLinks = [
@@ -68,6 +73,10 @@ export const footerLinks = [
 ];
 
 export const topDiscussions = [
+  "What is the best cursive font in Microsoft Word?",
+  "Who is naomi burton-crews and What about her family?",
+  "What are the latest chapters in Physical, Organic and Inorganic chemistry for class 11 and 12 of CBSE?",
+  "Elaine Starchuk: Where is Tommy Lee's first wife now?",
   "What is the best cursive font in Microsoft Word?",
   "Who is naomi burton-crews and What about her family?",
   "What are the latest chapters in Physical, Organic and Inorganic chemistry for class 11 and 12 of CBSE?",
