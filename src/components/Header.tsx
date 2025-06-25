@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { MessageSquare, Phone, Edit, Bell } from "lucide-react";
 import { FaUserCircle } from "react-icons/fa";
@@ -9,10 +8,8 @@ import { FaHome } from "react-icons/fa";
 import Image from "next/image";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [selectedLanguage] = useState("English");
   const [isMounted, setIsMounted] = useState(false);
-  const router = useRouter();
 
   // Delay rendering language selection until after hydration
   useEffect(() => {
@@ -51,7 +48,7 @@ const Header = () => {
               href="/gallery"
               className="text-white hover:text-blue-300 transition-colors flex items-center space-x-2"
             >
-               <img src="/icons/gallery.png" className="w-5 h-5 " alt="Add" />
+              <img src="/icons/gallery.png" className="w-5 h-5 " alt="Add" />
               <span>Gallery</span>
             </Link>
             <Link
@@ -88,7 +85,6 @@ const Header = () => {
                     name="language"
                     value="Hindi"
                     checked={selectedLanguage === "Hindi"}
-                    onChange={() => setSelectedLanguage("Hindi")}
                     className="accent-white"
                   />
                   <span>हिंदी</span>
@@ -105,7 +101,6 @@ const Header = () => {
                     name="language"
                     value="English"
                     checked={selectedLanguage === "English"}
-                    onChange={() => setSelectedLanguage("English")}
                     className="accent-white"
                   />
                   <span>English</span>

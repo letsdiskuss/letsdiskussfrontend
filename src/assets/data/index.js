@@ -1,8 +1,5 @@
 import {
   MessageCircle,
-  Search,
-  BellOff,
-  HelpCircle,
   Wrench,
   Gamepad2,
   Heart,
@@ -16,11 +13,6 @@ import {
   Instagram,
   Youtube,
   Linkedin,
-  Clock,
-  MessageSquare,
-  Eye,
-  ThumbsUp,
-  X,
 } from "lucide-react";
 
 export const posts = [
@@ -47,15 +39,15 @@ export const posts = [
 ];
 
 export const categories = [
-  { name: "Science & Technology", icon: "/icons/wrench.png" },
-  { name: "Current Topics", icon: "/icons/refresh.png" },
-  { name: "Entertainment / Lifestyle", icon: "/icons/tv.png" },
-  { name: "Health & Beauty", icon: "/icons/heart.png" },
-  { name: "Food / Cooking", icon: "/icons/fast-food.png" },
-  { name: "Astrology", icon: "/icons/esoteric.png" },
-  { name: "Sports", icon: "/icons/running.png" },
-  { name: "Education", icon: "/icons/open-book.png" },
-  { name: "Others", icon: "/icons/plus.png" },
+  { name: "Science & Technology", icon: Wrench },
+  { name: "Current Topics", icon: MessageCircle },
+  { name: "Entertainment / Lifestyle", icon: Gamepad2 },
+  { name: "Health & Beauty", icon: Heart },
+  { name: "Food / Cooking", icon: ChefHat },
+  { name: "Astrology", icon: Star },
+  { name: "Sports", icon: Trophy },
+  { name: "Education", icon: GraduationCap },
+  { name: "Others", icon: Plus },
 ];
 
 export const socialLinks = [
@@ -77,14 +69,6 @@ export const footerLinks = [
 
 export const topDiscussions = [
   "What is the best cursive font in Microsoft Word?",
-  "Who is naomi burton-crews and What about her family?",
-  "What are the latest chapters in Physical, Organic and Inorganic chemistry for class 11 and 12 of CBSE?",
-  "Elaine Starchuk: Where is Tommy Lee's first wife now?",
-   "What is the best cursive font in Microsoft Word?",
-  "Who is naomi burton-crews and What about her family?",
-  "What are the latest chapters in Physical, Organic and Inorganic chemistry for class 11 and 12 of CBSE?",
-  "Elaine Starchuk: Where is Tommy Lee's first wife now?",
-   "What is the best cursive font in Microsoft Word?",
   "Who is naomi burton-crews and What about her family?",
   "What are the latest chapters in Physical, Organic and Inorganic chemistry for class 11 and 12 of CBSE?",
   "Elaine Starchuk: Where is Tommy Lee's first wife now?",

@@ -1,20 +1,32 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, MessageSquare, ThumbsUp, ThumbsDown, Share, Bookmark, Flag, Clock, Eye, Reply, MoreHorizontal, Star, Award } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Textarea } from '@/components/ui/textarea';
-import { Separator } from '@/components/ui/separator';
-
+import React, { useState } from "react";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  MessageSquare,
+  ThumbsUp,
+  ThumbsDown,
+  Share,
+  Bookmark,
+  Flag,
+  Clock,
+  Eye,
+  Reply,
+  MoreHorizontal,
+  Star,
+  Award,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Textarea } from "@/components/ui/textarea";
 
 // Mock data for a discussion thread
 const discussion = {
   id: 1,
-  title: 'The Future of AI in Web Development: A Comprehensive Analysis',
+  title: "The Future of AI in Web Development: A Comprehensive Analysis",
   content: `
 # The Revolution is Here
 
@@ -54,23 +66,24 @@ The future of AI in web development is incredibly promising. We're moving toward
 What are your thoughts on this transformation? How has AI impacted your development workflow?
   `,
   author: {
-    name: 'Sarah Chen',
-    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?w=100',
+    name: "Sarah Chen",
+    avatar:
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?w=100",
     reputation: 2845,
-    badge: 'AI Expert',
-    joinDate: 'Joined Mar 2021',
+    badge: "AI Expert",
+    joinDate: "Joined Mar 2021",
     posts: 234,
-    isVerified: true
+    isVerified: true,
   },
-  category: 'Technology',
-  createdAt: '2 hours ago',
+  category: "Technology",
+  createdAt: "2 hours ago",
   views: 1203,
   likes: 89,
   dislikes: 3,
   replies: 47,
   isPinned: true,
   isBookmarked: false,
-  tags: ['AI', 'Web Development', 'Automation', 'Future Tech']
+  tags: ["AI", "Web Development", "Automation", "Future Tech"],
 };
 
 const replies = [
@@ -80,17 +93,18 @@ const replies = [
 
 The key is finding the right balance - using AI as a powerful assistant while maintaining our critical thinking skills. What's your experience with code review processes when AI-generated code is involved?`,
     author: {
-      name: 'Marcus Johnson',
-      avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?w=100',
+      name: "Marcus Johnson",
+      avatar:
+        "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?w=100",
       reputation: 1967,
-      badge: 'Senior Dev',
-      isVerified: false
+      badge: "Senior Dev",
+      isVerified: false,
     },
-    createdAt: '1 hour ago',
+    createdAt: "1 hour ago",
     likes: 23,
     dislikes: 1,
     replies: 5,
-    isAccepted: false
+    isAccepted: false,
   },
   {
     id: 2,
@@ -98,17 +112,18 @@ The key is finding the right balance - using AI as a powerful assistant while ma
 
 One concern I have is about junior developers becoming too dependent on AI without understanding the underlying principles. How do you think we should approach AI education in development bootcamps and CS programs?`,
     author: {
-      name: 'Elena Rodriguez',
-      avatar: 'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?w=100',
+      name: "Elena Rodriguez",
+      avatar:
+        "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?w=100",
       reputation: 3241,
-      badge: 'Tech Lead',
-      isVerified: true
+      badge: "Tech Lead",
+      isVerified: true,
     },
-    createdAt: '3 hours ago',
+    createdAt: "3 hours ago",
     likes: 31,
     dislikes: 0,
     replies: 8,
-    isAccepted: true
+    isAccepted: true,
   },
   {
     id: 3,
@@ -116,39 +131,26 @@ One concern I have is about junior developers becoming too dependent on AI witho
 
 The results are promising, but human oversight is still crucial. AI can catch common patterns but may miss context-specific security issues.`,
     author: {
-      name: 'Alex Park',
-      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?w=100',
+      name: "Alex Park",
+      avatar:
+        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?w=100",
       reputation: 1543,
-      badge: 'Security Expert',
-      isVerified: false
+      badge: "Security Expert",
+      isVerified: false,
     },
-    createdAt: '5 hours ago',
+    createdAt: "5 hours ago",
     likes: 18,
     dislikes: 0,
     replies: 3,
-    isAccepted: false
-  }
+    isAccepted: false,
+  },
 ];
 
-export default function DiscussionPage({ params }: { params: { id: string } }) {
-  const [newReply, setNewReply] = useState('');
-  const [isBookmarked, setIsBookmarked] = useState(discussion.isBookmarked);
-  const [likes, setLikes] = useState(discussion.likes);
-  const [hasLiked, setHasLiked] = useState(false);
-
-  const handleLike = () => {
-    if (hasLiked) {
-      setLikes(likes - 1);
-      setHasLiked(false);
-    } else {
-      setLikes(likes + 1);
-      setHasLiked(true);
-    }
-  };
-
-  const handleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
-  };
+export default function DiscussionPage() {
+  const [newReply] = useState("");
+  const [isBookmarked] = useState(discussion.isBookmarked);
+  const [likes] = useState(discussion.likes);
+  const [hasLiked] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
@@ -161,14 +163,17 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                   <MessageSquare className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold bg-green-950">
-                  ForumHub
-                </span>
+                <span className="text-xl font-bold bg-green-950">ForumHub</span>
               </Link>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm">Sign In</Button>
-              <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+              <Button variant="outline" size="sm">
+                Sign In
+              </Button>
+              <Button
+                size="sm"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+              >
                 Join Community
               </Button>
             </div>
@@ -179,11 +184,21 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <div className="flex items-center space-x-2 text-sm text-gray-600 mb-6">
-          <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
+          <Link href="/" className="hover:text-blue-600 transition-colors">
+            Home
+          </Link>
           <span>/</span>
-          <Link href="/categories" className="hover:text-blue-600 transition-colors">Categories</Link>
+          <Link
+            href="/categories"
+            className="hover:text-blue-600 transition-colors"
+          >
+            Categories
+          </Link>
           <span>/</span>
-          <Link href={`/category/${discussion.category.toLowerCase()}`} className="hover:text-blue-600 transition-colors">
+          <Link
+            href={`/category/${discussion.category.toLowerCase()}`}
+            className="hover:text-blue-600 transition-colors"
+          >
             {discussion.category}
           </Link>
           <span>/</span>
@@ -192,7 +207,12 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
 
         {/* Back Button */}
         <div className="mb-6">
-          <Button variant="ghost" size="sm" asChild className="text-gray-600 hover:text-blue-600">
+          <Button
+            variant="ghost"
+            size="sm"
+            asChild
+            className="text-gray-600 hover:text-blue-600"
+          >
             <Link href="/">
               <ArrowLeft className="h-4 w-4 mr-1" />
               Back to Discussions
@@ -216,7 +236,11 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
                   <Badge variant="outline">{discussion.category}</Badge>
                   <div className="flex flex-wrap gap-1">
                     {discussion.tags.map((tag, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs">
+                      <Badge
+                        key={index}
+                        variant="secondary"
+                        className="text-xs"
+                      >
                         #{tag}
                       </Badge>
                     ))}
@@ -227,8 +251,10 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
                 </h1>
               </div>
               <div className="flex items-center space-x-2 ml-4">
-                <Button variant="ghost" size="sm" onClick={handleBookmark}>
-                  <Bookmark className={`h-4 w-4 ${isBookmarked ? 'fill-current text-blue-600' : ''}`} />
+                <Button variant="ghost" size="sm">
+                  <Bookmark
+                    className={`h-4 w-4 ${isBookmarked ? "fill-current text-blue-600" : ""}`}
+                  />
                 </Button>
                 <Button variant="ghost" size="sm">
                   <Share className="h-4 w-4" />
@@ -242,22 +268,31 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
             {/* Author Info */}
             <div className="flex items-center space-x-4 mb-6 pb-6 border-b border-gray-100">
               <Avatar className="w-14 h-14 ring-2 ring-gray-100">
-                <AvatarImage src={discussion.author.avatar} alt={discussion.author.name} />
+                <AvatarImage
+                  src={discussion.author.avatar}
+                  alt={discussion.author.name}
+                />
                 <AvatarFallback>{discussion.author.name[0]}</AvatarFallback>
               </Avatar>
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-1">
-                  <h3 className="font-semibold text-gray-900">{discussion.author.name}</h3>
+                  <h3 className="font-semibold text-gray-900">
+                    {discussion.author.name}
+                  </h3>
                   {discussion.author.isVerified && (
                     <Badge className="bg-green-100 text-green-700 text-xs">
                       <Award className="w-3 h-3 mr-1" />
                       Verified
                     </Badge>
                   )}
-                  <Badge variant="outline" className="text-xs">{discussion.author.badge}</Badge>
+                  <Badge variant="outline" className="text-xs">
+                    {discussion.author.badge}
+                  </Badge>
                 </div>
                 <div className="flex items-center space-x-4 text-sm text-gray-500">
-                  <span>{discussion.author.reputation.toLocaleString()} reputation</span>
+                  <span>
+                    {discussion.author.reputation.toLocaleString()} reputation
+                  </span>
                   <span>{discussion.author.posts} posts</span>
                   <span>{discussion.author.joinDate}</span>
                 </div>
@@ -287,8 +322,7 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={handleLike}
-                  className={`${hasLiked ? 'text-blue-600 bg-blue-50' : 'text-gray-600'}`}
+                  className={`${hasLiked ? "text-blue-600 bg-blue-50" : "text-gray-600"}`}
                 >
                   <ThumbsUp className="w-4 h-4 mr-1" />
                   {likes}
@@ -334,14 +368,13 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
                   <Textarea
                     placeholder="Share your thoughts..."
                     value={newReply}
-                    onChange={(e) => setNewReply(e.target.value)}
                     className="min-h-24 resize-none border-gray-200 focus:border-blue-300"
                   />
                   <div className="flex justify-between items-center mt-3">
                     <div className="text-sm text-gray-500">
                       Be respectful and constructive in your response
                     </div>
-                    <Button 
+                    <Button
                       className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                       disabled={!newReply.trim()}
                     >
@@ -359,45 +392,70 @@ export default function DiscussionPage({ params }: { params: { id: string } }) {
               <CardContent className="p-6">
                 <div className="flex space-x-4">
                   <Avatar className="w-12 h-12 ring-2 ring-gray-100">
-                    <AvatarImage src={reply.author.avatar} alt={reply.author.name} />
+                    <AvatarImage
+                      src={reply.author.avatar}
+                      alt={reply.author.name}
+                    />
                     <AvatarFallback>{reply.author.name[0]}</AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-2">
-                      <h4 className="font-semibold text-gray-900">{reply.author.name}</h4>
+                      <h4 className="font-semibold text-gray-900">
+                        {reply.author.name}
+                      </h4>
                       {reply.author.isVerified && (
                         <Badge className="bg-green-100 text-green-700 text-xs">
                           <Award className="w-3 h-3 mr-1" />
                           Verified
                         </Badge>
                       )}
-                      <Badge variant="outline" className="text-xs">{reply.author.badge}</Badge>
+                      <Badge variant="outline" className="text-xs">
+                        {reply.author.badge}
+                      </Badge>
                       {reply.isAccepted && (
                         <Badge className="bg-green-100 text-green-700 text-xs">
                           ✓ Accepted Answer
                         </Badge>
                       )}
-                      <span className="text-sm text-gray-500">{reply.createdAt}</span>
+                      <span className="text-sm text-gray-500">
+                        {reply.createdAt}
+                      </span>
                     </div>
                     <div className="text-gray-800 mb-4 leading-relaxed whitespace-pre-line">
                       {reply.content}
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
-                        <Button variant="ghost" size="sm" className="text-gray-600">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-gray-600"
+                        >
                           <ThumbsUp className="w-4 h-4 mr-1" />
                           {reply.likes}
                         </Button>
-                        <Button variant="ghost" size="sm" className="text-gray-600">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-gray-600"
+                        >
                           <ThumbsDown className="w-4 h-4 mr-1" />
                           {reply.dislikes}
                         </Button>
-                        <Button variant="ghost" size="sm" className="text-gray-600">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-gray-600"
+                        >
                           <Reply className="w-4 h-4 mr-1" />
                           Reply ({reply.replies})
                         </Button>
                       </div>
-                      <Button variant="ghost" size="sm" className="text-gray-500">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-gray-500"
+                      >
                         <MoreHorizontal className="w-4 h-4" />
                       </Button>
                     </div>

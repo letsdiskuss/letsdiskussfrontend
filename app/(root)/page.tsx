@@ -1,11 +1,8 @@
 "use client";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   categories,
   socialLinks,
@@ -14,28 +11,16 @@ import {
   topDiscussions,
 } from "../../src/assets/data/index"; // Likely unused, remove
 
-import {
-  MessageCircle,
-  Search,
-  BellOff,
-  HelpCircle,
-  Star,
-  Clock,
-  MessageSquare,
-  Eye,
-  ThumbsUp,
-  X,
-} from "lucide-react";
+import { Search, BellOff, HelpCircle, Star, X } from "lucide-react";
 import { Discussion } from "@/types";
 import { DiscussionCard } from "@/components/pages/home/DiscussionCard";
 
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeTab, setActiveTab] = useState("Latest Questions");
-  const [isDisclaimerOpen, setDisclaimerOpen] = useState(false);
-  const [isAboutOpen, setAboutOpen] = useState(false);
-  const [discussions, setDiscussions] =
-    React.useState<Discussion[]>(featuredDiscussions);
+  const [searchQuery] = useState("");
+  const [activeTab] = useState("Latest Questions");
+  const [isDisclaimerOpen] = useState(false);
+  const [isAboutOpen] = useState(false);
+  const [discussions] = React.useState<Discussion[]>(featuredDiscussions);
 
   const tabs = [
     "Latest Questions",
@@ -116,7 +101,7 @@ export default function Home() {
               link.name === "Disclaimer" ? (
                 <button
                   key={index}
-                  onClick={() => setDisclaimerOpen(true)}
+                  // onClick={() => setDisclaimerOpen(true)}
                   className="text-blue-600 hover:text-blue-800 transition-colors underline"
                 >
                   {link.name}
@@ -124,7 +109,7 @@ export default function Home() {
               ) : link.name === "About" ? (
                 <button
                   key={index}
-                  onClick={() => setAboutOpen(true)}
+                  // onClick={() => setAboutOpen(true)}
                   className="text-blue-600 hover:text-blue-800 transition-colors underline"
                 >
                   {link.name}
@@ -137,7 +122,7 @@ export default function Home() {
                 >
                   {link.name}
                 </Link>
-              )
+              ),
             )}
           </div>
         </div>
@@ -154,7 +139,7 @@ export default function Home() {
                 <Input
                   placeholder="Search a question, user, blog or post"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  // onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                 />
               </div>
@@ -171,7 +156,7 @@ export default function Home() {
               {tabs.map((tab) => (
                 <button
                   key={tab}
-                  onClick={() => setActiveTab(tab)}
+                  // onClick={() => setActiveTab(tab)}
                   className={`text-sm font-medium transition-colors ${
                     activeTab === tab
                       ? "bg-teal-800 text-white px-4 py-2 rounded-tl-full rounded-br-md"
@@ -226,7 +211,7 @@ export default function Home() {
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
           <div className="bg-white max-w-lg w-full rounded shadow-lg p-6 relative">
             <button
-              onClick={() => setAboutOpen(false)}
+              // onClick={() => setAboutOpen(false)}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
             >
               <X className="w-5 h-5" />
@@ -257,7 +242,7 @@ export default function Home() {
             </div>
             <div className="text-right mt-4">
               <button
-                onClick={() => setAboutOpen(false)}
+                // onClick={() => setAboutOpen(false)}
                 className="text-blue-600 hover:text-blue-800 font-semibold"
               >
                 CLOSE

@@ -1,7 +1,7 @@
-'use client';
+"use client";
+import React, { useState } from "react";
 
-import { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 type FAQItem = {
   question: string;
@@ -10,7 +10,7 @@ type FAQItem = {
 
 const faqData: FAQItem[] = [
   {
-    question: 'How to create your profile on Let’s Diskuss?',
+    question: "How to create your profile on Let’s Diskuss?",
     answer: `Follow the given steps to create your profile on Let’s Diskuss:
 1. Click on Register on extreme right on the website.
 2. Fill in all the details and create a password.
@@ -20,7 +20,7 @@ const faqData: FAQItem[] = [
 Now you can update your profile picture, designation, etc, in your Let’s Diskuss account.`,
   },
   {
-    question: 'How to post a question on Let’s Diskuss?',
+    question: "How to post a question on Let’s Diskuss?",
     answer: `Follow the given steps to post a question on Let’s Diskuss:
 1. Click on Register on extreme right on the website.
 2. Fill in all the details and create a password.
@@ -29,7 +29,7 @@ Now you can update your profile picture, designation, etc, in your Let’s Disku
 5. Go to your e mail and confirm your registration.`,
   },
   {
-    question: 'How to post an answer?',
+    question: "How to post an answer?",
     answer: `Follow the given steps to post an answer to a question on Let’s Diskuss:
 1. Log in to your Let’s Diskuss account for posting an answer.
 2. Select the question to which you want to answer. This can be an already answered question or an unanswered question.
@@ -38,7 +38,7 @@ Now you can update your profile picture, designation, etc, in your Let’s Disku
 5. Click on Publish to post your answer.`,
   },
   {
-    question: 'How to create a blog on Let’s Diskuss?',
+    question: "How to create a blog on Let’s Diskuss?",
     answer: `Follow the given steps to create a blog on Let’s Diskuss:
 1. Log in to your Let’s Diskuss account for creating a Blog.
 2. Click on Become a Blogger tab, present at the extreme left of Let’s Diskuss webpage.
@@ -61,7 +61,7 @@ Once you have created a blog, you will need to post your content in it.
 7. Your blog will appear in the Blog section of Let’s Diskuss.`,
   },
   {
-    question: 'How many categories are offered on Let’s Diskuss?',
+    question: "How many categories are offered on Let’s Diskuss?",
     answer: `Let’s Diskuss is an online platform which allows you to discuss various issues related to different areas of interest and categories. To make the procedure of asking and answering questions easier, Let’s Diskuss broadly offers 11 categories. Users can ask questions, answer any question, and write blogs, on any of these 11 categories.
 1. Science and Technology
 2. Current Topics
@@ -78,33 +78,40 @@ Once you have created a blog, you will need to post your content in it.
 ];
 
 export default function FAQPage() {
-  const [openIndexes, setOpenIndexes] = useState<number[]>([]);
-
-  const toggleFAQ = (index: number) => {
-    if (openIndexes.includes(index)) {
-      setOpenIndexes(openIndexes.filter((i) => i !== index));
-    } else {
-      setOpenIndexes([...openIndexes, index]);
-    }
-  };
+  const [openIndexes] = useState<number[]>([]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 px-4">
-      <h1 className="text-3xl font-bold mb-8 text-center">LetsDiskuss - Frequently Asked Questions</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center">
+        LetsDiskuss - Frequently Asked Questions
+      </h1>
 
       {/* Description */}
       <div className="bg-white shadow p-6 rounded mb-6 max-w-4xl text-gray-700">
-        <p><strong>Let’s Diskuss</strong> is an online discussion forum which allows you to access information and latest news about the world and actively participate in the ongoing discussions. This online portal serves the interest of its users belonging to various different fields and categories. Users here can ask anything they want an answer or advice on, and get experts’ point of view immediately on their queries. Let’s Diskuss hosts a panel of different experts and intellectuals who hold an eminent position in their respective fields. With the help of this panel, Let’s Diskuss ensures that no query of its valuable users goes unanswered or unheard. Whether you have a problem related to your studies, your personal life, or you are disturbed thinking about a particular political issue, you can post it on Let’s Diskuss without being judged. Let’s Diskuss also offers a picture gallery for entertainment and a blog section for people who believe in detailed expression.</p>
+        <p>
+          <strong>Let Diskuss</strong> is an online discussion forum which
+          allows you to access information and latest news about the world and
+          actively participate in the ongoing discussions. This online portal
+          serves the interest of its users belonging to various different fields
+          and categories. Users here can ask anything they want an answer or
+          advice on, and get experts point of view immediately on their queries.
+          Let Diskuss hosts a panel of different experts and intellectuals who
+          hold an eminent position in their respective fields. With the help of
+          this panel, Let’s Diskuss ensures that no query of its valuable users
+          goes unanswered or unheard. Whether you have a problem related to your
+          studies, your personal life, or you are disturbed thinking about a
+          particular political issue, you can post it on Let’s Diskuss without
+          being judged. Let’s Diskuss also offers a picture gallery for
+          entertainment and a blog section for people who believe in detailed
+          expression.
+        </p>
       </div>
 
       {/* FAQ Accordion */}
       <div className="w-full max-w-4xl space-y-4">
         {faqData.map((faq, index) => (
           <div key={index} className="bg-white shadow p-4 rounded">
-            <button
-              onClick={() => toggleFAQ(index)}
-              className="flex justify-between items-center w-full text-left font-semibold text-gray-800"
-            >
+            <button className="flex justify-between items-center w-full text-left font-semibold text-gray-800">
               <span>Question: {faq.question}</span>
               {openIndexes.includes(index) ? (
                 <ChevronUp className="w-5 h-5 text-gray-600" />
@@ -114,7 +121,9 @@ export default function FAQPage() {
             </button>
             {openIndexes.includes(index) && (
               <div className="mt-4 text-gray-700 whitespace-pre-line">
-                <p><strong>Answer:</strong> {faq.answer}</p>
+                <p>
+                  <strong>Answer:</strong> {faq.answer}
+                </p>
               </div>
             )}
           </div>
