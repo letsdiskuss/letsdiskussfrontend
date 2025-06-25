@@ -39,18 +39,18 @@ export default function Home() {
       >
         {/* Left Sidebar */}
         <div className="w-[16%] bg-gray-100  overflow-y-auto">
-          <div className="p-3 ">
-            <Button className="w-full bg-teal-700 text-white py-3 px-4 rounded-md  hover:bg-teal-800 transition-colors flex items-center justify-center space-x-2">
+          <div className="p-5 ">
+            <Button className="w-full bg-[#20565c] text-white rounded-md  hover:bg-teal-800 transition-colors flex items-center justify-center ">
               <span>BECOME A BLOGGER</span>
             </Button>
           </div>
-          <div className="p-4 border border-gray-200 shadow-md rounded m-6">
+          <div className="p-4 border border-gray-200 bg-white shadow-md rounded m-6">
             <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-              <img
+              {/* <img
                 src="/icons/threelines.png"
                 alt=" Three Lines"
                 className="w-4 h-4"
-              />
+              /> */}
 
               <span>Category</span>
             </h3>
@@ -62,47 +62,55 @@ export default function Home() {
                   key={index}
                   className="flex items-center space-x-3 py-2 px-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors"
                 >
-                  <img
+                  {/* <img
                     src={category.icon}
                     alt={category.name}
                     className="w-6 h-6 object-contain"
-                  />
+                  /> */}
                   <span className="text-sm text-gray-700">{category.name}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="p-3 border border-gray-300 shadow-md">
+          {/* "Find Us" section */}
+          <div className="p-3 border m-5 border-gray-300 shadow-md">
             <h3 className="font-bold text-gray-900 mb-4">Find Us</h3>
             <div className="grid grid-cols-3 gap-3">
-              {socialLinks.map((social, index) => (
-                <div
-                  key={index}
-                  className={`${social.color} p-3 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}
-                >
-                  {typeof social.icon === "string" ? (
-                    <img
-                      src={social.icon}
-                      alt={social.name}
-                      className="w-5 h-5 object-contain"
-                    />
-                  ) : (
-                    <social.icon className="w-6 h-6 text-white" />
-                  )}
-                </div>
-              ))}
+              {socialLinks.map((social, index) => {
+                const isGoogleNews = social.name === "Google News";
+                return (
+                  <div
+                    key={index}
+                    className={`text-white rounded-full px-4 py-2 flex items-center justify-center w-[70px] h-[40px] ${
+                      isGoogleNews
+                        ? "bg-gradient-to-r from-green-500 via-red-500 to-blue-500"
+                        : social.color
+                    }`}
+                  >
+                    {typeof social.icon === "string" ? (
+                      <img
+                        src={social.icon}
+                        alt={social.name}
+                        className="w-5 h-5 object-contain"
+                      />
+                    ) : (
+                      <social.icon className="w-6 h-6 text-white" />
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
           {/* Footer */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 ml-5 text-sm ">
             {footerLinks.map((link, index) =>
               link.name === "Disclaimer" ? (
                 <button
                   key={index}
                   // onClick={() => setDisclaimerOpen(true)}
-                  className="text-blue-600 hover:text-blue-800 transition-colors underline"
+                  className="text-blue-600 hover:text-blue-800 transition-colors "
                 >
                   {link.name}
                 </button>
@@ -110,7 +118,7 @@ export default function Home() {
                 <button
                   key={index}
                   // onClick={() => setAboutOpen(true)}
-                  className="text-blue-600 hover:text-blue-800 transition-colors underline"
+                  className="text-blue-600 hover:text-blue-800 transition-colors "
                 >
                   {link.name}
                 </button>
@@ -169,10 +177,15 @@ export default function Home() {
             </div>
           </div>
 
-          <div className=" mx-auto p-6">
+          <div className="mx-auto p-6">
             <div className="space-y-4">
               {discussions?.map((discussion: Discussion, index) => (
-                <DiscussionCard key={index} discussion={discussion} />
+                <div
+                  key={index}
+                  className="border-2 border-green-900 rounded-md"
+                >
+                  <DiscussionCard discussion={discussion} />
+                </div>
               ))}
             </div>
           </div>
@@ -181,22 +194,22 @@ export default function Home() {
         {/* 3rd div -------------------------------------------------------- */}
 
         {/* Right Sidebar - 20% */}
-        <div className="w-[16%] bg-gray-100 h-5 ">
-          <div className="p-4 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+        <div className="w-[16%] m-5 bg-white rounded-md shadow h-[300px] overflow-y-auto">
+          <div className="p-3 ">
+            <h3 className="font-semibold text-gray-900 mb-3 flex items-center space-x-2">
               <img
                 src="/icons/threelines.png"
-                alt=" Three Lines"
+                alt="Three Lines"
                 className="w-4 h-4"
               />
-
               <span>Top Discussions</span>
             </h3>
-            <div className="space-y-4">
+            <hr className="my-2 border-gray-400" />
+            <div className="space-y-3">
               {topDiscussions.map((discussion, index) => (
                 <div key={index} className="flex items-start space-x-2">
                   <Star className="w-4 h-4 text-yellow-500 mt-1 flex-shrink-0" />
-                  <p className="text-sm text-gray-700 hover:text-blue-600 cursor-pointer transition-colors">
+                  <p className="text-sm text-gray-800 hover:text-blue-600 cursor-pointer transition-colors">
                     {discussion}
                   </p>
                 </div>
