@@ -56,6 +56,7 @@ export const socialLinks = [
   { name: "Instagram", icon: Instagram, color: "bg-pink-500" },
   { name: "YouTube", icon: Youtube, color: "bg-red-500" },
   { name: "LinkedIn", icon: Linkedin, color: "bg-blue-700" },
+  { name: "Google News", icon: "/icons/googlenews.png", color: "bg-blue-700" }, // ✅ PNG here
 ];
 
 export const footerLinks = [
