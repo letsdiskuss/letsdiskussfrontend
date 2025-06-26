@@ -182,7 +182,6 @@ export default function DiscussionPage() {
       </header>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Breadcrumb */}
         <div className="flex items-center space-x-2 text-sm text-gray-600 mb-6">
           <Link href="/" className="hover:text-blue-600 transition-colors">
             Home
@@ -356,7 +355,6 @@ export default function DiscussionPage() {
             </Button>
           </div>
 
-          {/* Reply Form */}
           <Card className="border-0 bg-white shadow-sm">
             <CardContent className="p-6">
               <div className="flex space-x-4">

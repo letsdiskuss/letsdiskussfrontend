@@ -53,7 +53,6 @@ export default function Page() {
             </button>
           </div>
 
-          {/* Contact Form */}
           <div className="bg-white rounded-lg shadow-xl p-6 w-full">
             <h2 className="text-xl font-bold mb-4">Contact Us</h2>
             <form className="space-y-4">
