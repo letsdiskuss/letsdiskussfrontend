@@ -51,16 +51,41 @@ export const categories = [
 ];
 
 export const socialLinks = [
-  { name: "Twitter", icon: Twitter, color: "bg-blue-400" },
-  { name: "Facebook", icon: Facebook, color: "bg-blue-600" },
-  { name: "Instagram", icon: Instagram, color: "bg-pink-500" },
-  { name: "YouTube", icon: Youtube, color: "bg-red-500" },
-  { name: "LinkedIn", icon: Linkedin, color: "bg-blue-700" },
+  {
+    name: "Twitter",
+    icon: Twitter,
+    color: "bg-blue-400",
+    url: "https://twitter.com/Letsdiskuss",
+  },
+  {
+    name: "Facebook",
+    icon: Facebook,
+    color: "bg-blue-600",
+    url: "https://facebook.com/letsdiscuss",
+  },
+  {
+    name: "Instagram",
+    icon: Instagram,
+    color: "bg-pink-500",
+    url: "https://instagram.com",
+  },
+  {
+    name: "YouTube",
+    icon: Youtube,
+    color: "bg-red-500",
+    url: "https://youtube.com",
+  },
+  {
+    name: "LinkedIn",
+    icon: Linkedin,
+    color: "bg-blue-700",
+    url: "https://linkedin.com",
+  },
   {
     name: "Google News",
-    icon: "/icons/googlenews.png",
-    color:
-      "bg-gradient-to-r from-green-500 via-yellow-400 via-red-500 to-blue-500",
+    icon: "/google.png",
+    color: "", // Custom gradient is used in the JSX logic
+    url: "https://news.google.com",
   },
 ];
 
