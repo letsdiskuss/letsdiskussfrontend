@@ -6,6 +6,7 @@ import { MessageSquare, Phone, Edit, Bell } from "lucide-react";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import Image from "next/image";
+import { Images } from "lucide-react";
 
 const Header = () => {
   const [selectedLanguage] = useState("English");
@@ -48,7 +49,7 @@ const Header = () => {
               href="/gallery"
               className="text-white hover:text-blue-300 transition-colors flex items-center space-x-2"
             >
-              {/* <Image className="w-4 h-4" /> */}
+              <Images className="w-4 h-4" />
               <span>Gallery</span>
             </Link>
             <Link
