@@ -25,12 +25,7 @@ export default function AddBlog() {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="bg-white rounded border shadow-md w-full max-w-xl">
         <div className="border-b p-4">
-          <h2 className="text-xl font-semibold text-gray-800">
-            Add Blog{" "}
-            <span className="ml-2 inline-block bg-blue-700 text-white text-sm px-3 py-1 rounded-full">
-              Online tutorials
-            </span>
-          </h2>
+          <h2 className="text-xl font-semibold text-gray-800">Add Blog </h2>
         </div>
 
         {/* // eslint-disable-next-line react/jsx-no-bind */}

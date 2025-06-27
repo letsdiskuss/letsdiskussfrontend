@@ -5,11 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   categories,
-  socialLinks,
   footerLinks,
   featuredDiscussions,
   topDiscussions,
-} from "../../../src/assets/data/index"; // Likely unused, remove
+} from "../../../src/assets/data/index";
+import {
+  AlignJustify,
+  Twitter,
+  Facebook,
+  Instagram,
+  Youtube,
+  Linkedin,
+} from "lucide-react";
 
 import { Search, BellOff, HelpCircle, Star, X } from "lucide-react";
 import { Discussion } from "@/types";
@@ -18,11 +25,11 @@ import { DiscussionCard } from "@/components/pages/home/DiscussionCard";
 export default function Home() {
   const [searchQuery] = useState("");
   const [activeTab] = useState("Latest Questions");
-  const [isDisclaimerOpen] = useState(false);
-  const [isAboutOpen] = useState(false);
+  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [discussions] = React.useState<Discussion[]>(featuredDiscussions);
 
-  const tabs = ["", "Reels"];
+  const tabs = ["Recent Posts", "Popular Posts"];
 
   return (
     <>
@@ -32,35 +39,35 @@ export default function Home() {
         }`}
       >
         {/* Left Sidebar */}
-        <div className="w-[16%] bg-gray-100  overflow-y-auto">
-          <div className="p-5 ">
-            <Button className="w-full bg-[#20565c] text-white rounded-md  hover:bg-teal-800 transition-colors flex items-center justify-center ">
-              <span>BECOME A BLOGGER</span>
-            </Button>
+        <div className="w-[16%] bg-gray-100 overflow-y-auto">
+          <div className="p-5">
+            <Link href="/add-blog" passHref>
+              <Button className="w-full bg-[#20565c] text-white rounded-md hover:bg-teal-800 transition-colors flex items-center justify-center">
+                <span>BECOME A BLOGGER</span>
+              </Button>
+            </Link>
           </div>
           <div className="p-4 border border-gray-200 bg-white shadow-md rounded m-6">
             <h3 className="font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-              {/* <img
-                src="/icons/threelines.png"
-                alt=" Three Lines"
-                className="w-4 h-4"
-              /> */}
-
+              <AlignJustify className="w-4 h-4" />
               <span>Category</span>
             </h3>
             <hr className="my-6 border-gray-400" />
-
             <div className="space-y-2">
               {categories.map((category, index) => (
                 <div
                   key={index}
                   className="flex items-center space-x-3 py-2 px-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors"
                 >
-                  {/* <img
-                    src={category.icon}
-                    alt={category.name}
-                    className="w-6 h-6 object-contain"
-                  /> */}
+                  {typeof category.icon === "string" ? (
+                    <img
+                      src={category.icon}
+                      alt={category.name}
+                      className="w-6 h-6 object-contain"
+                    />
+                  ) : (
+                    <category.icon className="w-6 h-6 text-gray-700" />
+                  )}
                   <span className="text-sm text-gray-700">{category.name}</span>
                 </div>
               ))}
@@ -71,48 +78,79 @@ export default function Home() {
           <div className="p-3 border m-5 border-gray-300 shadow-md">
             <h3 className="font-bold text-gray-900 mb-4">Find Us</h3>
             <div className="grid grid-cols-3 gap-3">
-              {socialLinks.map((social, index) => {
-                const isGoogleNews = social.name === "Google News";
-                return (
-                  <div
-                    key={index}
-                    className={`text-white rounded-full px-4 py-2 flex items-center justify-center w-[70px] h-[40px] ${
-                      isGoogleNews
-                        ? "bg-gradient-to-r from-green-500 via-red-500 to-blue-500"
-                        : social.color
-                    }`}
-                  >
-                    {typeof social.icon === "string" ? (
-                      <img
-                        src={social.icon}
-                        alt={social.name}
-                        className="w-5 h-5 object-contain"
-                      />
-                    ) : (
-                      <social.icon className="w-6 h-6 text-white" />
-                    )}
-                  </div>
-                );
-              })}
+              <a
+                href="https://twitter.com/Letsdiskuss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full flex items-center justify-center w-[70px] h-[40px] hover:scale-105 transition-transform duration-200 bg-blue-400"
+              >
+                <Twitter className="w-6 h-6 text-white" />
+              </a>
+              <a
+                href="https://www.facebook.com/letsdiskussss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full flex items-center justify-center w-[70px] h-[40px] hover:scale-105 transition-transform duration-200 bg-blue-600"
+              >
+                <Facebook className="w-6 h-6 text-white" />
+              </a>
+              <a
+                href="https://www.instagram.com/letsdiskuss/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full flex items-center justify-center w-[70px] h-[40px] hover:scale-105 transition-transform duration-200 bg-pink-500"
+              >
+                <Instagram className="w-6 h-6 text-white" />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UC8P36SywfXz8FI0ioSzJuew/videos"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full flex items-center justify-center w-[70px] h-[40px] hover:scale-105 transition-transform duration-200 bg-red-500"
+              >
+                <Youtube className="w-6 h-6 text-white" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/lets-diskuss/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full flex items-center justify-center w-[70px] h-[40px] hover:scale-105 transition-transform duration-200 bg-blue-700"
+              >
+                <Linkedin className="w-6 h-6 text-white" />
+              </a>
+              <a
+                href="https://news.google.com/home?hl=en-IN&gl=IN&ceid=IN%3Aenk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full flex items-center justify-center w-[70px] h-[40px] hover:scale-105 transition-transform duration-200 bg-gradient-to-r from-green-400 via-red-500 to-blue-500"
+              >
+                <img
+                  src="/google.png"
+                  alt="Google News"
+                  className="w-5 h-5 object-contain"
+                />
+              </a>
             </div>
           </div>
 
           {/* Footer */}
-          <div className="flex flex-wrap gap-3 ml-5 text-sm ">
+          <div className="flex flex-wrap gap-3 ml-5 text-sm">
             {footerLinks.map((link, index) =>
               link.name === "Disclaimer" ? (
                 <button
                   key={index}
-                  // onClick={() => setDisclaimerOpen(true)}
-                  className="text-blue-600 hover:text-blue-800 transition-colors "
+                  // eslint-disable-next-line react/jsx-no-bind
+                  onClick={() => setIsDisclaimerOpen(true)}
+                  className="text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   {link.name}
                 </button>
               ) : link.name === "About" ? (
                 <button
                   key={index}
-                  // onClick={() => setAboutOpen(true)}
-                  className="text-blue-600 hover:text-blue-800 transition-colors "
+                  // eslint-disable-next-line react/jsx-no-bind
+                  onClick={() => setIsAboutOpen(true)}
+                  className="text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   {link.name}
                 </button>
@@ -128,8 +166,6 @@ export default function Home() {
             )}
           </div>
         </div>
-
-        {/* 2nd div------------------------------- */}
 
         {/* Main Content - 50% */}
         <div className="flex-1  px-10">
@@ -185,17 +221,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 3rd div -------------------------------------------------------- */}
-
         {/* Right Sidebar - 20% */}
         <div className="w-[16%] m-5 bg-white rounded-md shadow h-[300px] overflow-y-auto">
           <div className="p-3 ">
             <h3 className="font-semibold text-gray-900 mb-3 flex items-center space-x-2">
-              {/* <img
-                src="/icons/threelines.png"
-                alt="Three Lines"
-                className="w-4 h-4"
-              /> */}
+              <AlignJustify className="w-4 h-4" />
               <span>Top Posts</span>
             </h3>
             <hr className="my-2 border-gray-400" />
@@ -213,12 +243,13 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Disclaimer Modal */}
+      {/* About Modal */}
       {isAboutOpen && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
           <div className="bg-white max-w-lg w-full rounded shadow-lg p-6 relative">
             <button
-              // onClick={() => setAboutOpen(false)}
+              // eslint-disable-next-line react/jsx-no-bind
+              onClick={() => setIsAboutOpen(false)}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
             >
               <X className="w-5 h-5" />
@@ -238,18 +269,61 @@ export default function Home() {
                 wide range of categories.
               </p>
               <p>
-                Whether youre a student, professional, hobbyist, or just
-                curious, there something here for you. We value respectful
+                Whether you are a student, professional, hobbyist, or just
+                curious, there is something here for you. We value respectful
                 communication, factual accuracy, and open dialogue.
               </p>
               <p>
-                Thank you for being part of our journey. Lets discuss, learn,
+                Thank you for being part of our journey.Let us discuss, learn,
                 and grow together!
               </p>
             </div>
             <div className="text-right mt-4">
               <button
-                // onClick={() => setAboutOpen(false)}
+                // eslint-disable-next-line react/jsx-no-bind
+                onClick={() => setIsAboutOpen(false)}
+                className="text-blue-600 hover:text-blue-800 font-semibold"
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Disclaimer Modal */}
+      {isDisclaimerOpen && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-white max-w-lg w-full rounded shadow-lg p-6 relative">
+            <button
+              // eslint-disable-next-line react/jsx-no-bind
+              onClick={() => setIsDisclaimerOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <h2 className="text-xl font-bold mb-2">Disclaimer</h2>
+            <div className="text-gray-700 text-sm space-y-2 max-h-[300px] overflow-y-auto">
+              <p>
+                The content provided on LetsDiskuss is for general informational
+                purposes only. All discussions, opinions, and advice are those
+                of individual users and do not represent the official position
+                of the platform.
+              </p>
+              <p>
+                We do not guarantee the accuracy or reliability of any
+                user-contributed content. You are advised to verify information
+                independently before making decisions.
+              </p>
+              <p>
+                LetsDiskuss is not liable for any losses or damages arising from
+                the use of this site.
+              </p>
+            </div>
+            <div className="text-right mt-4">
+              <button
+                // eslint-disable-next-line react/jsx-no-bind
+                onClick={() => setIsDisclaimerOpen(false)}
                 className="text-blue-600 hover:text-blue-800 font-semibold"
               >
                 CLOSE

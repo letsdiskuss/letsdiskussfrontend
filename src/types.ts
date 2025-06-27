@@ -12,6 +12,7 @@ export interface Author {
   avatar: string;
   reputation: number; // Changed from 'badge' to 'reputation' based on the object
   badge: string;
+  email: string;
 }
 
 export interface Discussion {
@@ -26,4 +27,5 @@ export interface Discussion {
   views: number;
   likes: number;
   author: Author;
+  image: string;
 }

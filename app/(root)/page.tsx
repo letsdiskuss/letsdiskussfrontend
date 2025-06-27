@@ -50,9 +50,11 @@ export default function Home() {
         {/* Left Sidebar */}
         <div className="w-[16%] bg-gray-100 overflow-y-auto">
           <div className="p-5">
-            <Button className="w-full bg-[#20565c] text-white rounded-md hover:bg-teal-800 transition-colors flex items-center justify-center">
-              <span>BECOME A BLOGGER</span>
-            </Button>
+            <Link href="/add-blog" passHref>
+              <Button className="w-full bg-[#20565c] text-white rounded-md hover:bg-teal-800 transition-colors flex items-center justify-center">
+                <span>BECOME A BLOGGER</span>
+              </Button>
+            </Link>
           </div>
 
           <div className="p-4 border border-gray-200 bg-white shadow-md rounded m-6">
@@ -190,9 +192,14 @@ export default function Home() {
               <div className="flex items-center space-x-4">
                 <BellOff className="text-red-600 cursor-pointer hover:text-red-700 transition-colors" />
                 <HelpCircle className="text-gray-600 cursor-pointer hover:text-gray-700 transition-colors" />
-                <Button className="bg-teal-800 text-white hover:bg-[#20565c] px-6 py-2 text-sm rounded-md font-medium">
-                  Ask Question
-                </Button>
+                <Link href="/ask-question" passHref>
+                  <Button
+                    asChild
+                    className="w-full bg-[#20565c] text-white rounded-md hover:bg-teal-800 transition-colors flex items-center justify-center"
+                  >
+                    <a>Ask Question</a>
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="flex space-x-6 px-4 py-2 bg-white ml-5">

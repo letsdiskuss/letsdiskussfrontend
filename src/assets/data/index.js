@@ -118,6 +118,7 @@ export const featuredDiscussions = [
         "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?w=100",
       reputation: 2845,
       badge: "Expert",
+      email: "author1@gmail.com",
     },
     category: "Technology",
     replies: 47,
@@ -128,6 +129,8 @@ export const featuredDiscussions = [
     hasNewReplies: true,
     excerpt:
       "Exploring how artificial intelligence is revolutionizing the way we build and maintain web applications...",
+    image:
+      "https://cdn.pixabay.com/photo/2016/02/01/00/56/news-1172463_1280.jpg",
   },
   {
     id: 2,
@@ -139,6 +142,7 @@ export const featuredDiscussions = [
         "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?w=100",
       reputation: 1967,
       badge: "Mentor",
+      email: "author2@gmail.com",
     },
     category: "Business & Entrepreneurship",
     replies: 32,
@@ -149,126 +153,7 @@ export const featuredDiscussions = [
     hasNewReplies: true,
     excerpt:
       "Sharing practical insights on managing distributed teams, communication strategies, and building culture...",
-  },
-  {
-    id: 3,
-    title: "Minimalist Design Principles That Actually Work in 2024",
-    author: {
-      name: "Elena Rodriguez",
-      avatar:
-        "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?w=100",
-      reputation: 3241,
-      badge: "Pro Designer",
-    },
-    category: "Creative Arts",
-    replies: 28,
-    views: 692,
-    likes: 52,
-    createdAt: "6 hours ago",
-    isPinned: false,
-    hasNewReplies: false,
-    excerpt:
-      "Breaking down the core principles of minimalist design and how to apply them effectively...",
-  },
-  {
-    id: 4,
-    title: "Mental Health in the Digital Age: Finding Balance",
-    author: {
-      name: "Dr. Michael Park",
-      avatar:
-        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?w=100",
-      reputation: 4156,
-      badge: "Healthcare Expert",
-    },
-    category: "Health & Lifestyle",
-    replies: 73,
-    views: 2341,
-    likes: 127,
-    createdAt: "1 day ago",
-    isPinned: false,
-    hasNewReplies: true,
-    excerpt:
-      "Discussing the impact of technology on mental health and practical strategies for digital wellness...",
-  },
-  {
-    id: 5,
-    title: "The Future of AI in Web Development: A Comprehensive Analysis",
-    author: {
-      name: "Sarah Chen",
-      avatar:
-        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?w=100",
-      reputation: 2845,
-      badge: "Expert",
-    },
-    category: "Technology",
-    replies: 47,
-    views: 1203,
-    likes: 89,
-    createdAt: "2 hours ago",
-    isPinned: true,
-    hasNewReplies: true,
-    excerpt:
-      "Exploring how artificial intelligence is revolutionizing the way we build and maintain web applications...",
-  },
-  {
-    id: 6,
-    title:
-      "Building a Successful Remote Team: Lessons from 5 Years of Experience",
-    author: {
-      name: "Marcus Johnson",
-      avatar:
-        "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?w=100",
-      reputation: 1967,
-      badge: "Mentor",
-    },
-    category: "Business & Entrepreneurship",
-    replies: 32,
-    views: 856,
-    likes: 64,
-    createdAt: "4 hours ago",
-    isPinned: false,
-    hasNewReplies: true,
-    excerpt:
-      "Sharing practical insights on managing distributed teams, communication strategies, and building culture...",
-  },
-  {
-    id: 7,
-    title: "Minimalist Design Principles That Actually Work in 2024",
-    author: {
-      name: "Elena Rodriguez",
-      avatar:
-        "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?w=100",
-      reputation: 3241,
-      badge: "Pro Designer",
-    },
-    category: "Creative Arts",
-    replies: 28,
-    views: 692,
-    likes: 52,
-    createdAt: "6 hours ago",
-    isPinned: false,
-    hasNewReplies: false,
-    excerpt:
-      "Breaking down the core principles of minimalist design and how to apply them effectively...",
-  },
-  {
-    id: 8,
-    title: "Mental Health in the Digital Age: Finding Balance",
-    author: {
-      name: "Dr. Michael Park",
-      avatar:
-        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?w=100",
-      reputation: 4156,
-      badge: "Healthcare Expert",
-    },
-    category: "Health & Lifestyle",
-    replies: 73,
-    views: 2341,
-    likes: 127,
-    createdAt: "1 day ago",
-    isPinned: false,
-    hasNewReplies: true,
-    excerpt:
-      "Discussing the impact of technology on mental health and practical strategies for digital wellness...",
+    image:
+      "https://about.fb.com/wp-content/uploads/2024/02/Facebook-News-Update_US_AU_Header.jpg",
   },
 ];
